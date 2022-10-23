@@ -15,12 +15,12 @@ public class ProtectedController {
     String username = (String) sessionObj.getAttribute("username");
     System.out.println("username: " + username);
     if (username == null) {
-      return "redirect:/common/login"; 
+      return "redirect:/common/login";
     }
-    
+
     model.addAttribute("username", username);
     model.addAttribute("message", "Hello");
-    
+
     return "list-users";
-  } 
+  }
 }

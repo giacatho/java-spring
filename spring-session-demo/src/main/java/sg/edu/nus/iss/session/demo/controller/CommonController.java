@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.session.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -21,29 +22,32 @@ public class CommonController {
     if (username != null) {
       return "redirect:/protected/list-users";
     }
-    
+
     System.out.println("In login()");
     User myUser = new User();
     model.addAttribute("user", myUser);
-    
+
     return "login";
   }
-  
+
   @PostMapping("/login")
-  public String login(@ModelAttribute("user") User user, HttpSession sessionObj) {
-    if (user.getUsername().equalsIgnoreCase("dipsa")) {
+  public String login(@ModelAttribute("user") User user, HttpServletRequest request) {
+    HttpSession sessionObj = request.getSession();
+    if (user.getUsername().equalsIgnoreCase("dipsa") || user.getUsername().equalsIgnoreCase("student")) {
       sessionObj.setAttribute("username", user.getUsername());
       return "redirect:/protected/list-users";
     }
-    
+
     return "login";
   }
-  
+
   @RequestMapping("/logout")
   public String logout(HttpSession sessionObj) {
-    sessionObj.invalidate();
-    
+    sessionObj.removeAttribute("username");
+
+    // sessionObj.invalidate();
+
     return "redirect:/common/login";
   }
-  
+
 }
