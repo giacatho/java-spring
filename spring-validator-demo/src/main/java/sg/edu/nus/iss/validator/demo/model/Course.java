@@ -7,7 +7,6 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Course {
-  
   @NotBlank(message = "Course code is required")
   private String code;
   

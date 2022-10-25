@@ -34,6 +34,6 @@ public class CommonController {
     }
     
     // authenticate successfully, redirect to next page
-    return "redirect:/protected/list-products";
+    return "login-success";
   }
 }

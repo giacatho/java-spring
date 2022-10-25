@@ -41,6 +41,10 @@ public class Customer {
   @Digits(integer = 3, fraction = 0)
   private String creditCardCVV;
   
+  private String oldPassword;
+  
+  private String newPassword;
+  
   public String getName() {
     return name;
   }
@@ -95,5 +99,21 @@ public class Customer {
 
   public void setCreditCardCVV(String creditCardCVV) {
     this.creditCardCVV = creditCardCVV;
+  }
+
+  public String getOldPassword() {
+    return oldPassword;
+  }
+
+  public void setOldPassword(String oldPassword) {
+    this.oldPassword = oldPassword;
+  }
+
+  public String getNewPassword() {
+    return newPassword;
+  }
+
+  public void setNewPassword(String newPassword) {
+    this.newPassword = newPassword;
   }
 }
