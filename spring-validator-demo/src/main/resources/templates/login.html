@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring Validator Demo</title>
+  <link rel="stylesheet" th:href="@{/css/simple.css}" />
+</head>
+<body>
+<h3>Login</h3>
+<form method="post" th:object="${user}" th:action="@{'/common/authenticate'}">
+  <table>
+    <tr>
+      <td>Username</td>
+      <td colspan="3">
+        <fieldset>
+          <input text="text" th:field="*{username}" autocomplete="off"/>
+          <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+        </fieldset>
+      </td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td colspan="3">
+        <fieldset>
+          <input type="password" th:field="*{password}" autocomplete="new-password"/>
+          <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+        </fieldset>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
