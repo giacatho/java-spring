@@ -2,10 +2,21 @@ package sg.edu.nus.iss.validator.demo.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Course {
+  
+  @NotBlank(message = "Course code is required")
   private String code;
+  
+  @NotBlank(message = "Course name is required")
   private String name;
+  
+  @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date startDate;
+  @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date endDate;
   
   public String getCode() {
