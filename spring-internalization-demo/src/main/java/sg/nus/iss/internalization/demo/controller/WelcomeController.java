@@ -9,4 +9,9 @@ public class WelcomeController {
   public String welcome() {
     return "welcome";
   }
+  
+  @GetMapping("/welcome2")
+  public String welcome2() {
+    return "welcome2";
+  }
 }
