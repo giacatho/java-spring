@@ -1,0 +1,16 @@
+<html>
+<body>
+  <h3>Internationalization Demo</h3>
+  <p th:text="#{welcome.message('Myra')}"></p>  
+  
+  <h3>Change Language</h3>
+    <ul>
+        <li>
+            <a href="/change-language?lang=en" data-th-text="#{label.lang.en}"></a>
+        </li>
+        <li>
+            <a href="/change-language?lang=fr" data-th-text="#{label.lang.fr}"></a>
+        </li>
+    </ul>
+</body>
+</html>
