@@ -19,41 +19,45 @@ import sg.edu.iss.club.service.FacilityServiceImpl;
 public class FacilityController {
 	
 	@Autowired
-	private FacilityService fservice;
+	private FacilityService facilityService;
 	
 	@Autowired
 	public void setFacilityService(FacilityServiceImpl fserviceImpl) {
-		this.fservice = fserviceImpl;
+		this.facilityService = fserviceImpl;
 	}
     
 	@RequestMapping(value = "/list")
 	public String list(Model model) {
-		model.addAttribute("facilities", fservice.findAllFacilities());
+		model.addAttribute("facilities", facilityService.findAllFacilities());
 		return "facilities";
 	}
+	
 	@RequestMapping(value = "/add")
 	public String addForm(Model model) {
 		model.addAttribute("facility", new Facility());
 		return "facility-form";
 	}
+	
 	@RequestMapping(value = "/edit/{id}")
 	public String editForm(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("facility", fservice.findFacilityById(id));
+		model.addAttribute("facility", facilityService.findFacilityById(id));
 		return "facility-form";
 	}
+	
 	@RequestMapping(value = "/save")
 	public String saveFacility(@ModelAttribute("facility") @Valid Facility facility, 
 			BindingResult bindingResult,  Model model) {
 		if (bindingResult.hasErrors()) {
 			return "facility-form";
 		}
-		fservice.saveFacility(facility);
-		return "forward:/facility/list";
+		facilityService.saveFacility(facility);
+		return "redirect:/facility/list";
 	}
+	
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteFacility(@PathVariable("id") Integer id) {
-		fservice.deleteFacility(fservice.findFacilityById(id));
-		return "forward:/facility/list";
+		facilityService.deleteFacility(facilityService.findFacilityById(id));
+		return "redirect:/facility/list";
 	}
 
 }

@@ -82,7 +82,7 @@ public class BookingController {
 			bookingService.addBooking(booking);
 			return "redirect:/booking/list";
 		} else
-			return "error";		
+			return "error";
 	}
 	
 	@RequestMapping(value = "/cancel/{id}")
