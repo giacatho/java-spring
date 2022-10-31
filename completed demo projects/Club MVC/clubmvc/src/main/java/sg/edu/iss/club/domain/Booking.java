@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,10 +23,12 @@ public class Booking {
   @OneToOne
   private Facility facility;
 
+  @NotNull(message = "startDate must be provided")
   @FutureOrPresent
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date startDate;
 
+  @NotNull(message = "endDate must be provided")
   @FutureOrPresent
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date endDate;

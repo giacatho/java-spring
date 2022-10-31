@@ -19,19 +19,19 @@
 			<th>From Date</th>
 			<th>End Date</th>
 			<th>Status</th>
-			<th>Cancel Booking</th>
+			<th>Cancel</th>
 		</tr>
 		<tr th:each="booking:${bookings}" >
-			<td th:text=${booking.bookingId}>Id</td>
-			<td th:text="${booking.member.firstName}+${booking.member.lastName}"> Name</td>
+			<td th:text=${booking.id}>Id</td>
+			<td th:text="${booking.member.fullName}">Name</td>
 			<td th:text=${booking.member.username}>User Name</td>
 			<td th:text=${booking.facility.name}>Last Name</td>
 			<td th:text="${#dates.format(booking.startDate, 'yyyy-MM-dd')}">From Date</td>
 			<td th:text="${#dates.format(booking.endDate, 'yyyy-MM-dd')}">End Date</td>
-			<td th:text=${booking.status}>status</td>
+			<td th:text=${booking.status}>Status</td>
 			<td ><a href="CancelBooking.html"
-				th:href="@{/booking/cancel/}+${booking.bookingId}" 
-				th:if="${booking.status == T(sg.edu.iss.club.domain.BookingStatus).BOOKED}">Cancel</a></td>
+        th:href="@{/booking/cancel/}+${booking.id}" 
+        th:if="${booking.status.name() == 'BOOKED'}">Cancel</a></td>
 		</tr>
 	</table>
     <br/>

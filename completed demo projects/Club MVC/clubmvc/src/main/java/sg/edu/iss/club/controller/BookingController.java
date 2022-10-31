@@ -26,22 +26,22 @@ import sg.edu.iss.club.service.MemberService;
 public class BookingController {
 	
 	@Autowired
-	private BookingService bservice;
+	private BookingService bookingService;
 	
 	@Autowired
-	private FacilityService fservice;
+	private FacilityService facilityService;
 	
 	@Autowired
-	private MemberService mservice;
+	private MemberService memberService;
 	
 	@Autowired
-	public void setBookingService(BookingServiceImpl bserviceImpl) {
-		this.bservice = bserviceImpl;
+	public void setBookingService(BookingServiceImpl bookingServiceImpl) {
+		this.bookingService = bookingServiceImpl;
 	}
 
 	@RequestMapping(value = "/list")
 	public String list(Model model) {
-		model.addAttribute("bookings", bservice.listBooking());
+		model.addAttribute("bookings", bookingService.listBooking());
 		return "bookings";
 	}
 	
@@ -49,8 +49,8 @@ public class BookingController {
 	public String addForm(Model model) {
 		model.addAttribute("booking", new Booking());
 		
-		List<Member> memberList = mservice.findAllMembers();
-		List<Facility> facilityList = fservice.findAllFacilities();
+		List<Member> memberList = memberService.findAllMembers();
+		List<Facility> facilityList = facilityService.findAllFacilities();
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("facilityList", facilityList);
 		
@@ -58,29 +58,36 @@ public class BookingController {
 	}
 	
 	@RequestMapping(value = "/save")
-	public String saveMember(@ModelAttribute("booking") @Valid Booking booking, 
+	public String saveBooking(@ModelAttribute("booking") @Valid Booking booking, 
 			BindingResult bindingResult,  Model model) {
 		
 		if (bindingResult.hasErrors()) {
+		  List<Member> memberList = memberService.findAllMembers();
+	    List<Facility> facilityList = facilityService.findAllFacilities();
+	    model.addAttribute("memberList", memberList);
+	    model.addAttribute("facilityList", facilityList);
+	    
 			return "booking-form";
 		}
-		Member member = mservice.findMemberByFirstName(booking.getMember().getFirstName());
-		member = mservice.findMemberById(member.getId());
+		
+		Member member = memberService.findMemberById(booking.getMember().getId());
 		booking.setMember(member);
-		Facility facility = fservice.findFacilityByName(booking.getFacility().getName());
-		facility = fservice.findFacilityById(facility.getId());
+		
+		Facility facility = facilityService.findFacilityById(booking.getFacility().getId());
 		booking.setFacility(facility);
+		
 		booking.setStatus(BookingStatus.BOOKED);
-		if (bservice.checkAvailability(booking)) {
-			bservice.addBooking(booking);
-			return "forward:/booking/list";
+		
+		if (bookingService.checkAvailability(booking)) {
+			bookingService.addBooking(booking);
+			return "redirect:/booking/list";
 		} else
 			return "error";		
 	}
 	
 	@RequestMapping(value = "/cancel/{id}")
 	public String cancelBooking(@PathVariable("id") Integer id) {
-		bservice.cancelBooking(bservice.findBookingById(id));
-		return "forward:/booking/list";
+		bookingService.cancelBooking(bookingService.findBookingById(id));
+		return "redirect:/booking/list";
 	}
 }

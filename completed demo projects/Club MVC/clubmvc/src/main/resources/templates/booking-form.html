@@ -12,13 +12,13 @@
 			<input type="hidden" th:field="*{id}">
 		</fieldset>
 		<fieldset>
-			Member Name <select th:field="*{member.firstName}">
+			Member <select th:field="*{member.id}">
 				<option th:each="memberObj:${memberList}" th:value="${memberObj.id}"
 					th:text="${memberObj.fullName}"></option>
 			</select>
 		</fieldset>
 		<fieldset>
-			Facility Name <select th:field="*{facility.name}">
+			Facility <select th:field="*{facility.id}">
 				<option th:each="facilityObj:${facilityList}" th:value="${facilityObj.id}"
 					th:text="${facilityObj.name}"></option>
 			</select>
