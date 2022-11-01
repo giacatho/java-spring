@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.edu.nus</groupId>
-	<artifactId>cats</artifactId>
+	<artifactId>sg.edu.nus.demo.cats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cats</name>
 	<description>Course Application Tracking System [CATS]</description>
@@ -81,6 +81,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
 

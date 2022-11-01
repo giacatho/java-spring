@@ -47,7 +47,6 @@ public class StaffController {
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 		binder.addValidators(cValidator);
-
 	}
 
 	@RequestMapping(value = "/logout")
