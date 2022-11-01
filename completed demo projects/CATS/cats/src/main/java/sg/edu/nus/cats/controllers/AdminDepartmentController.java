@@ -67,6 +67,7 @@ public class AdminDepartmentController {
 		ModelAndView mav = new ModelAndView("department-list");
 		List<Department> departmentList = dService.findAllDepartments();
 		mav.addObject("departmentList", departmentList);
+		
 		return mav;
 	}
 
