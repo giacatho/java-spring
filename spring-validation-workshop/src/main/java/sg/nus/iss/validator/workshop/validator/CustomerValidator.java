@@ -47,25 +47,5 @@ public class CustomerValidator implements Validator {
        errors.rejectValue("creditCardCVV", "error.creditCardCVV", "CVV is required");
      }
    }
-    
-    
-//    if ( (ccNumber != null  && !ccNumber.isBlank()) ||
-//         (ccExpiration != null && !ccExpiration.isBlank()) ||
-//         (ccCVV != null && !ccCVV.isBlank())  ) {
-//      
-//      if (ccNumber == null || ccNumber.isBlank()) {
-//        errors.rejectValue("creditCardNumber", "error.creditCardNumber", "Number is required");
-//      }
-//      if (ccExpiration == null || ccExpiration.isBlank()) {
-//        errors.rejectValue("creditCardExpiration", "error.creditCardExpiration", "Expiration is required");
-//      }
-//      if (ccCVV == null || ccCVV.isBlank()) {
-//        errors.rejectValue("getCreditCardCVV", "error.getCreditCardCVV", "Credit card number is required");
-//      }
-//    }
-    
-    //String expiration = customer.getCreditCardExpiration();
-    
-    
   }
 }
