@@ -13,14 +13,12 @@ public class Customer {
   private String email;
 
   private String gender;
-
   private String creditCardNumber;
-  
   private String creditCardExpiration;
-  
   private String creditCardCVV;
-  
-  public Customer() {}
+
+  public Customer() {
+  }
 
   public String getName() {
     return name;
@@ -61,7 +59,6 @@ public class Customer {
   public void setCreditCardExpiration(String creditCardExpiration) {
     this.creditCardExpiration = creditCardExpiration;
   }
-
 
   public String getCreditCardCVV() {
     return creditCardCVV;
