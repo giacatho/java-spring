@@ -11,21 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountController {
   @GetMapping("/edit") 
   public String edit(HttpSession session) {
-    String username = (String) session.getAttribute("username");
-    if (username == null) {
-      return "redirect:/login";
-    }
-    
     return "account-edit";
   }
   
   @GetMapping("/delete") 
-  public String delete(HttpSession session) {
-    String username = (String) session.getAttribute("username");
-    if (username == null) {
-      return "redirect:/login";
-    }
-    
+  public String delete(HttpSession session) { 
     return "account-delete";
   }
 }
