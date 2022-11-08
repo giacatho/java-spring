@@ -20,7 +20,7 @@ public class SpringJpaDemoApplication {
   }
 
   @Bean
-  public CommandLineRunner commandLineRun(CourseRepository courseRepo, LecturerRepository lecturerRepo) {
+  CommandLineRunner commandLineRun(CourseRepository courseRepo, LecturerRepository lecturerRepo) {
     return args -> {
       Course fopcs = courseRepo.save(new Course("FOPCS", "Foundations of Programming with C#", "Write programs using C# with Visual Studio"));
       Course oopcs = courseRepo.save(new Course("OOPCS", "Object Oriented Programming", "Understand and program on main Object Oriented concepts"));
