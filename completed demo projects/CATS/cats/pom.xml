@@ -12,7 +12,7 @@
 	<groupId>sg.edu.nus</groupId>
 	<artifactId>sg.edu.nus.demo.cats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cats</name>
+	<name>Course Application Tracking System</name>
 	<description>Course Application Tracking System [CATS]</description>
 	<properties>
 		<java.version>17</java.version>
