@@ -1,13 +1,13 @@
-package sg.nus.iss.internalization.demo;
+package sg.nus.iss.i18n.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringInternalizationDemoApplication {
+public class SpringI18nDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringInternalizationDemoApplication.class, args);
+		SpringApplication.run(SpringI18nDemoApplication.class, args);
 	}
 
 }

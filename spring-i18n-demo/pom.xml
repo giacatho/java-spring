@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.nus.iss.javaspring</groupId>
-	<artifactId>sg.nus.iss.internalization.demo</artifactId>
+	<artifactId>spring-i18n-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-internalization-demo</name>
+	<name>spring-i18n-demo</name>
 	<description>Demo project for Spring Boot Internalization</description>
 	<properties>
 		<java.version>17</java.version>
