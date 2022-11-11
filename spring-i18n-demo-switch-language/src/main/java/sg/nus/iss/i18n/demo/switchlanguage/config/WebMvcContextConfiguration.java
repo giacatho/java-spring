@@ -1,4 +1,4 @@
-package sg.nus.iss.internalization.demo.switchlanguage.config;
+package sg.nus.iss.i18n.demo.switchlanguage.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

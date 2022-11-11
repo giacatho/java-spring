@@ -1,4 +1,4 @@
-package sg.nus.iss.internalization.demo.switchlanguage.controller;
+package sg.nus.iss.i18n.demo.switchlanguage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
