@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -50,9 +49,6 @@ public class User implements Serializable {
           @JoinColumn(name = "roleid", referencedColumnName = "roleid") }
   )
   private List<Role> roleSet;
-  
-  @Transient
-  private List<String> roleIds = new ArrayList<String>();
 
   public User() {}
   
@@ -108,11 +104,10 @@ public class User implements Serializable {
   }
 
   public List<String> getRoleIds() {
-    return roleIds;
-  }
-
-  public void setRoleIds(List<String> roleIds) {
-    this.roleIds = roleIds;
+    List<String> retList = new ArrayList<>();
+    roleSet.forEach(role -> retList.add(role.getRoleId()));
+    
+    return retList;
   }
 
 }

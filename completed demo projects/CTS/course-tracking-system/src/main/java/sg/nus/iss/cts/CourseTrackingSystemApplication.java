@@ -39,9 +39,9 @@ public class CourseTrackingSystemApplication {
       employeeRepository.save(new Employee("110239", "Yuen Kwan", "100027"));
       
       // Add a few Users
-      User admin = new User("admin", "admin@nus.edu.sg", "password", "101034");
-      User esther = new User("esthertan", "esthertan@nus.edu.sg", "password", "100027");
-      User tin = new User("tinnguyen", "tin.nguyen@gmail.com", "password", "312025");
+      User admin = new User("admin", "admin", "password", "101034");
+      User esther = new User("esther", "esther", "password", "100027");
+      User tin = new User("tin", "tin", "password", "312025");
       
       admin.setRoleSet(Arrays.asList(adminRole));
       esther.setRoleSet(Arrays.asList(staffRole, managerRole));

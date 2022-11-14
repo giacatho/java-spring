@@ -69,7 +69,7 @@ public class CommonController {
     
     session.setAttribute("usession", userSession);
     
-    return "redirect:/staff/history";
+    return "redirect:/staff/course/history";
   }
   
   @GetMapping("/about")
