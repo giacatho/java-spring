@@ -1,5 +1,7 @@
 package sg.nus.iss.cts;
 
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,20 +27,29 @@ public class CourseTrackingSystemApplication {
                             UserRepository userRepository) {
     return (args) -> {
       // Add a few Roles
-      roleRepository.save(new Role("admin", "Administrator", "System administrator"));
-      roleRepository.save(new Role("staff", "Staff", "Staff members"));
-      roleRepository.save(new Role("manager", "Manager", "Manager"));
+      Role adminRole = roleRepository.save(new Role("admin", "Administrator", "System administrator"));
+      Role staffRole = roleRepository.save(new Role("staff", "Staff", "Staff members"));
+      Role managerRole = roleRepository.save(new Role("manager", "Manager", "Manager"));
       
       // Add a few Employees
+      employeeRepository.save(new Employee("101034", "Admin"));
       employeeRepository.save(new Employee("100027", "Esther Tan"));
       employeeRepository.save(new Employee("312025", "Nguyen Tri Tin", "100027"));
       employeeRepository.save(new Employee("310017", "Cher Wah", "100027"));
       employeeRepository.save(new Employee("110239", "Yuen Kwan", "100027"));
       
       // Add a few Users
-      userRepository.save(new User("esthertan", "esthertan@nus.edu.sg", "password", "100027"));
-      userRepository.save(new User("tinnguyen", "tin.nguyen@gmail.com", "password", "312025"));
+      User admin = new User("admin", "admin@nus.edu.sg", "password", "101034");
+      User esther = new User("esthertan", "esthertan@nus.edu.sg", "password", "100027");
+      User tin = new User("tinnguyen", "tin.nguyen@gmail.com", "password", "312025");
       
+      admin.setRoleSet(Arrays.asList(adminRole));
+      esther.setRoleSet(Arrays.asList(staffRole, managerRole));
+      tin.setRoleSet(Arrays.asList(staffRole));
+      
+      userRepository.saveAndFlush(admin);
+      userRepository.saveAndFlush(esther);
+      userRepository.saveAndFlush(tin);
     };
 	}
 }

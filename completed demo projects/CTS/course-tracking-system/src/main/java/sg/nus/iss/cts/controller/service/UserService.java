@@ -16,5 +16,12 @@ public interface UserService {
   List<Role> findRolesForUser(String userId);
   List<String> findRoleNamesForUser(String userId);
   List<String> findManagerNameByUID(String userId);
-  User authenticate(String uname, String pwd);
+  
+  /**
+   * Return the respective User object if username and password are correct, null otherwise
+   * @param username
+   * @param pwd
+   * @return
+   */
+  User authenticate(String username, String pwd);
 }
