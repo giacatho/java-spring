@@ -3,9 +3,9 @@ package sg.nus.iss.cts.controller.service;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sg.nus.iss.cts.model.Role;
 import sg.nus.iss.cts.repository.RoleRepository;
@@ -33,28 +33,28 @@ public class RoleServiceImpl implements RoleService {
 		return roleRepository.saveAndFlush(role);
 	}
 
+	@Transactional
 	@Override
 	public Role changeRole(Role role) {
-		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.saveAndFlush(role);
 	}
 
+	@Transactional
 	@Override
 	public void removeRole(Role role) {
-		// TODO Auto-generated method stub
-		
+		roleRepository.delete(role);
 	}
 
+	@Transactional
 	@Override
 	public List<String> findAllRolesNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.findAllRolesNames();
 	}
 
+	@Transactional
 	@Override
 	public List<Role> findRoleByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.findRoleByName(name);
 	}
 
 	
