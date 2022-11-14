@@ -20,21 +20,18 @@ public class Employee implements Serializable {
   @Column(name = "managerid")
   private String managerId;
 
-  public Employee() {
+  public Employee() { }
+  
+  public Employee(String employeeId, String name) {
+    this(employeeId, name, null);
   }
 
   public Employee(String employeeId, String name, String managerId) {
-
     this.employeeId = employeeId;
     this.name = name;
     this.managerId = managerId;
-
   }
-
-  public Employee(String employeeId) {
-    setEmployeeId(employeeId);
-  }
-
+  
   public String getEmployeeId() {
     return employeeId;
   }

@@ -5,8 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import sg.nus.iss.cts.model.Employee;
 import sg.nus.iss.cts.model.Role;
+import sg.nus.iss.cts.model.User;
+import sg.nus.iss.cts.repository.EmployeeRepository;
 import sg.nus.iss.cts.repository.RoleRepository;
+import sg.nus.iss.cts.repository.UserRepository;
 
 @SpringBootApplication
 public class CourseTrackingSystemApplication {
@@ -16,12 +20,25 @@ public class CourseTrackingSystemApplication {
 	}
 
 	@Bean
-	CommandLineRunner loadData(RoleRepository roleRepository) {
+	CommandLineRunner loadData(RoleRepository roleRepository, 
+                            EmployeeRepository employeeRepository,
+                            UserRepository userRepository) {
     return (args) -> {
-        // save a couple of Roles
+      // Add a few Roles
       roleRepository.save(new Role("admin", "Administrator", "System administrator"));
       roleRepository.save(new Role("staff", "Staff", "Staff members"));
       roleRepository.save(new Role("manager", "Manager", "Manager"));
+      
+      // Add a few Employees
+      employeeRepository.save(new Employee("100027", "Esther Tan"));
+      employeeRepository.save(new Employee("312025", "Nguyen Tri Tin", "100027"));
+      employeeRepository.save(new Employee("310017", "Cher Wah", "100027"));
+      employeeRepository.save(new Employee("110239", "Yuen Kwan", "100027"));
+      
+      // Add a few Users
+      userRepository.save(new User("esthertan", "esthertan@nus.edu.sg", "password", "100027"));
+      userRepository.save(new User("tinnguyen", "tin.nguyen@gmail.com", "password", "312025"));
+      
     };
 	}
 }

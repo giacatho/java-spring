@@ -54,13 +54,13 @@ public class RoleController {
 	public String newRolePage(Model model) {
 	  model.addAttribute("role", new Role());
 		
-		return "role-create";
+		return "role-new";
 	}
 
 	@PostMapping("/create")
 	public String createNewRole(@ModelAttribute @Valid Role role, BindingResult result) {
 		if (result.hasErrors()) {
-			return "role-create";
+			return "role-new";
 		}
 
 		String message = "New role " + role.getRoleId() + " was successfully created.";

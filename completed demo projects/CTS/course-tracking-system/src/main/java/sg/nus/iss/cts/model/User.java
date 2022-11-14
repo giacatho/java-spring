@@ -25,7 +25,7 @@ import javax.validation.constraints.NotEmpty;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User implements Serializable {
   
   private static final long serialVersionUID = 6529685098267757680L;
@@ -52,7 +52,7 @@ public class User implements Serializable {
   private List<Role> roleSet;
   
   @Transient
-  private ArrayList<String> roleIds = new ArrayList<String>();
+  private List<String> roleIds = new ArrayList<String>();
 
   public User() {}
   
@@ -107,11 +107,11 @@ public class User implements Serializable {
     this.roleSet = roleSet;
   }
 
-  public ArrayList<String> getRoleIds() {
+  public List<String> getRoleIds() {
     return roleIds;
   }
 
-  public void setRoleIds(ArrayList<String> roleIds) {
+  public void setRoleIds(List<String> roleIds) {
     this.roleIds = roleIds;
   }
 
