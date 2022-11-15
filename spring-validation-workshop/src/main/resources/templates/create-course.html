@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring Validator Demo</title>
+  <link rel="stylesheet" th:href="@{/css/simple.css}" />
+</head>
+<body>
+<body>
+  <h3>New Course</h3>
+  <form th:action="@{/course/create}"
+      th:object="${course}" method="post">
+    <table>
+      <tbody>
+        <tr>
+          <td>Code</td>
+          <td><input type="text" th:field="*{code}" /></td>
+          <td th:if="${#fields.hasErrors('code')}"
+            th:errors="*{code}"></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><input type="text" th:field="*{name}" /></td>
+          <td th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}"></td>
+        </tr>
+        <tr>
+          <td>Organizer</td>
+          <td><input type="text" th:field="*{organizer}" /></td>
+        </tr>
+        <tr>
+          <td>Start Date</td>
+          <td><input type="text" th:field="*{startDate}"  /></td>
+          <td th:if="${#fields.hasErrors('startDate')}"
+            th:errors="*{startDate}"></td>
+        </tr>
+        <tr>
+          <td>End Date</td>
+          <td><input type="text" th:field="*{endDate}" /></td>
+          <td th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></td>
+        </tr>
+        <tr>
+          <td>Fee</td>
+          <td><input type="text" th:field="*{fees}" size="20" /></td>
+          <td>GST included</td>
+          <td><input type="checkbox" th:field="*{gstIncluded}" /></td>
+        </tr>
+        <tr>
+          <td>Justification</td>
+          <td colspan="3"><textarea th:field="*{justification}"
+              th:rows="${justification}" cols="40"></textarea></td>
+        </tr>
+                
+        <tr>
+          <td><input type="submit" value="Create" class="blcass" /></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </form>
+</body>
+</html>

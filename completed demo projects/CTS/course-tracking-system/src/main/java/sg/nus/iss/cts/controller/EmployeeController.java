@@ -58,8 +58,9 @@ public class EmployeeController {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public String createNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult result) {
+  public String createNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult result, Model model) {
     if (result.hasErrors()) {
+      model.addAttribute("eidlist", employeeService.findAllEmployeeIDs());
       return "employee-new";
     }
     
