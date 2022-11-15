@@ -6,12 +6,16 @@
   <div th:replace="fragments/layout.html :: menu"/>
   <div th:replace="fragments/layout.html :: header"/> 
   <h3 th:utext="#{title.coursePending}">Course History</h3>
+  
   <div th:if="${not #lists.isEmpty(pendinghistory)}">
     <table>
       <tr class="listRecord" th:each="entry, stat : ${pendinghistory} ">
         <td>
+          <h4 th:text="${entry.key.name}">Name</h4>          
+          <div th:if="${#lists.isEmpty(entry.value)}">
+            <p>No Pending Courses</p>
+          </div>
           <div th:if="${not #lists.isEmpty(entry.value)}">
-            <span th:text="${entry.key.name}">Name</span> <br />
             <table style="border: 1;">
               <tr class="listHeading">
                 <th th:utext="#{fieldLabel.reference}">Reference</th>

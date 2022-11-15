@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 /**
  * User class
@@ -32,11 +32,11 @@ public class User implements Serializable {
   @Column(name = "userid")
   private String userId;
   
-  @NotEmpty
+  @NotBlank(message = "{error.user.name.empty}")
   @Column(name = "name")
   private String name;
   
-  @NotEmpty
+  @NotBlank(message = "{error.user.password.empty}")
   @Column(name = "password")
   private String password;
   

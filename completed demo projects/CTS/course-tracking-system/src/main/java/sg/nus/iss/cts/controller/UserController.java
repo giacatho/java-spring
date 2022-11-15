@@ -1,7 +1,6 @@
 package sg.nus.iss.cts.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -76,17 +75,23 @@ public class UserController {
   }
 
   @PostMapping("/create")
-  public String createNewUser(@ModelAttribute @Valid User user, BindingResult result) {  
+  public String createNewUser(@ModelAttribute @Valid User user, BindingResult result, Model model) {  
     if (result.hasErrors()) {
+      List<String> eidList = employeeService.findAllEmployeeIDs();
+      model.addAttribute("eidlist", eidList);
+      List<Role> roles = roleService.findAllRoles();
+      model.addAttribute("roles", roles);
+      
       return "user-new";
     }
     
+    // The roles from user input only has id, we retrieve
+    // the respective Role object
     List<Role> newRoleSet = new ArrayList<Role>();
-    for (Iterator<Role> iterator = user.getRoleSet().iterator(); iterator.hasNext();) {
-      Role type = (Role) iterator.next();
-      Role newRole = roleService.findRole(type.getRoleId());
-      newRoleSet.add(newRole);
-    }
+    user.getRoleSet().forEach(role -> {
+      Role completeRole = roleService.findRole(role.getRoleId());
+      newRoleSet.add(completeRole);
+    });
     user.setRoleSet(newRoleSet);
 
     userService.createUser(user);
@@ -100,7 +105,7 @@ public class UserController {
     model.addAttribute("user", user);
     
     List<Role> roles = roleService.findAllRoles();
-    model.addAttribute("roles",roles);
+    model.addAttribute("allRoles",roles);
     
     return "user-edit";
   }

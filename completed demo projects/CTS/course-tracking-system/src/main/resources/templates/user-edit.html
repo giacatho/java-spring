@@ -34,12 +34,15 @@
         </tr>
         <tr>
           <td><label >User roles (multiple select):</label></td>
-          <td></td>
-          <td><select size="03"
-            multiple="multiple" name="roleSet" id="roleSet">
-              <option th:each="role:${roles}" th:value="${role.roleId}"
-                th:text="${role.description}">Roles</option>
-          </select></td>
+          <td>
+            <select size="03"
+              multiple="multiple" id="roleSet" name="roleSet">
+                <option th:each="role : ${allRoles}" 
+                        th:value="${role.roleId}"
+                        th:text="${role.description}"
+                        th:selected="${user.roleSet.contains(role)}">Roles</option>
+            </select>
+          </td>
         </tr>
         <tr>
           <td><input type="submit" value="Update" /></td>

@@ -19,10 +19,12 @@
         <tr>
           <td><span th:text="#{fieldLabel.managerId}"></span></td>
           <td>
-            <fieldset><select th:field="*{managerId}">
-                <option th:each="manager : ${eidlist}" th:value="${manager}" th:text="${manager}">List
-                </option>
-              </select></fieldset>
+            <fieldset>
+              <select th:field="*{managerId}">
+                <option value=""></option>
+                <option th:each="manager : ${eidlist}" th:value="${manager}" th:text="${manager}">List</option>
+              </select>
+            </fieldset>
           </td>
           <td th:if="${#fields.hasErrors('managerId')}" th:errors="*{managerId}"></td>
         </tr>
