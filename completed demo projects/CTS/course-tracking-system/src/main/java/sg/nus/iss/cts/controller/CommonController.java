@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sg.nus.iss.cts.controller.service.EmployeeService;
 import sg.nus.iss.cts.controller.service.UserService;
 import sg.nus.iss.cts.model.Employee;
-import sg.nus.iss.cts.model.Role;
 import sg.nus.iss.cts.model.User;
 import sg.nus.iss.cts.model.UserSession;
 
@@ -45,7 +44,7 @@ public class CommonController {
     
     User u = userService.authenticate(user.getName(), user.getPassword());
     if (u == null) {
-      model.addAttribute("loginResult", "Incorrect username/password");
+      model.addAttribute("loginMessage", "Incorrect username/password");
       return "login";
     }
     
@@ -53,10 +52,6 @@ public class CommonController {
     // a. The user object itself
     UserSession userSession = new UserSession();
     userSession.setUser(u);
-    
-    List<Role> rset = u.getRoleSet();
-    System.out.println("Roles:");
-    rset.forEach(System.out::println);
     
     // b. The respective employee object
     userSession.setEmployee(employeeService.findEmployeeById(u.getEmployeeId()));
@@ -69,11 +64,30 @@ public class CommonController {
     
     session.setAttribute("usession", userSession);
     
+    List<String> roleIds = u.getRoleIds();
+    System.out.println("Roles:");
+    roleIds.forEach(System.out::println);
+    
+    // Done, let's redirect to respective page
+    if (roleIds.contains("admin")) {
+      return "redirect:/admin/employee/list";
+    }
+    
+    if (roleIds.contains("manager")) {
+      return "redirect:/manager/pending";
+    }
+    
     return "redirect:/staff/course/history";
   }
   
   @GetMapping("/about")
   public String home() {
     return "about";
+  }
+  
+  @RequestMapping(value = "/logout")
+  public String logout(HttpSession session) {
+    session.invalidate();
+    return "redirect:/home";
   }
 }

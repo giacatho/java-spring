@@ -21,7 +21,7 @@
               <button class="subnavbtn">Manager Menu <i class="fa fa-caret-down"></i></button>
               <div class="subnav-content">
                 <a th:href="@{/manager/pending}" th:utext="#{menu.coursesForApproval}">Pending Approvals</a>
-                <a th:href="@{/manager/shistory}" th:utext="#{menu.subordinateHistory}">Subordinates History</a>
+                <a th:href="@{/manager/subordinates-history}" th:utext="#{menu.subordinateHistory}">Subordinates History</a>
               </div>
             </div>
           </div>
@@ -33,7 +33,6 @@
                 <a th:href="@{/admin/user/list}" th:utext="#{menu.admin.ulist}">Users</a>
                 <a th:href="@{/admin/role/list}" th:utext="#{menu.admin.rlist}">Roles</a>
                 <a th:href="@{/admin/employee/list}" th:utext="#{menu.admin.elist}">Employees</a>
-                <a th:href="@{/admin/department/list}" th:utext="#{menu.admin.dlist}">Departments</a>
               </div>
             </div>
           </div>
@@ -44,11 +43,13 @@
               <div class="subnav-content">
                 <a th:href="@{/staff/course/history}" th:utext="#{menu.personalHistory}">History</a>
                 <a th:href="@{/staff/course/create}" th:utext="#{menu.courseSubmit}">Apply</a>
-                <a th:href="@{/staff/logout}" th:utext="#{menu.logout}">Logout</a>
               </div>
             </div>
           </div>
         </div>
+        
+        <a th:href="@{/logout}" th:utext="#{menu.logout}">Logout</a>
+        
       </div>
       
     </nav>

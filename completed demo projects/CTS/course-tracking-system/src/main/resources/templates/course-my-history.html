@@ -7,7 +7,7 @@
   <h2>Your Course History</h2>
   
   <div th:if="${#lists.isEmpty(chistory)}">
-    <p>You have no courses. Start creating one.</p>
+    <p>You have no courses. Start applying a new one.</p>
   </div>
   
   <div th:if="${not #lists.isEmpty(chistory)}">
@@ -27,8 +27,8 @@
         <td align="left" th:text="${course.courseId}">Id</td>
         <td align="left" th:text="${course.employeeId}">Employee</td>
         <td align="left" th:text="${course.courseName}">Name</td>
-        <td align="left" th:text="${#dates.format(course.fromDate, 'yyyy-MM-dd')}">From</td>
-        <td align="left" th:text="${#dates.format(course.toDate, 'yyyy-MM-dd')}">To</td>
+        <td align="left" th:text="${#temporals.format(course.fromDate, 'yyyy-MM-dd')}">From</td>
+        <td align="left" th:text="${#temporals.format(course.toDate, 'yyyy-MM-dd')}">To</td>
         <td align="left" th:text="${course.fees}">Fees</td>
         <td align="left" th:text="${course.status}">Status</td>
         <td>

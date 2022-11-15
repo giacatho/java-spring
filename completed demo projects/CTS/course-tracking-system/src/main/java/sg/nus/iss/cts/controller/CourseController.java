@@ -1,14 +1,11 @@
 package sg.nus.iss.cts.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,16 +35,7 @@ public class CourseController {
 
   @InitBinder("course")
   private void initCourseBinder(WebDataBinder binder) {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    dateFormat.setLenient(false);
-    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     binder.addValidators(courseValidator);
-  }
-
-  @RequestMapping(value = "/logout")
-  public String logout(HttpSession session) {
-    session.invalidate();
-    return "redirect:/home";
   }
 
   /**

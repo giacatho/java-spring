@@ -1,6 +1,6 @@
 package sg.nus.iss.cts.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -29,7 +29,7 @@ public class Course {
   /** Attributes for Course **/
   @Id
   @Column(name = "courseid")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int courseId;
   
   @Basic
@@ -44,11 +44,11 @@ public class Course {
   
   @Column(name = "fromdate")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date fromDate;
+  private LocalDate fromDate;
   
   @Column(name = "todate")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date toDate;
+  private LocalDate toDate;
   
   @Basic
   @Column(name = "fees")
@@ -72,10 +72,9 @@ public class Course {
     this.courseId = courseId;
   }
   
-  public Course(int courseId, String employeeId, String courseName, String organiser, Date fromDate, Date toDate,
+  public Course(String employeeId, String courseName, String organiser, LocalDate fromDate, LocalDate toDate,
       double fees, boolean gstIncluded, String justification, CourseEventEnum status) {
     super();
-    this.courseId = courseId;
     this.employeeId = employeeId;
     this.courseName = courseName;
     this.organiser = organiser;
@@ -119,19 +118,19 @@ public class Course {
     this.organiser = organiser;
   }
 
-  public Date getFromDate() {
+  public LocalDate getFromDate() {
     return fromDate;
   }
 
-  public void setFromDate(Date fromDate) {
+  public void setFromDate(LocalDate fromDate) {
     this.fromDate = fromDate;
   }
 
-  public Date getToDate() {
+  public LocalDate getToDate() {
     return toDate;
   }
 
-  public void setToDate(Date toDate) {
+  public void setToDate(LocalDate toDate) {
     this.toDate = toDate;
   }
 
