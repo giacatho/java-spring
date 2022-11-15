@@ -16,7 +16,6 @@
             <table style=" border: 1;">
               <tr class="listHeading">
                 <th th:utext="#{fieldLabel.reference}">Reference</th>
-                <th th:utext="#{fieldLabel.name}">Name</th>
                 <th th:utext="#{fieldLabel.courseName}">Course</th>
                 <th th:utext="#{fieldLabel.startDate}">Start</th>
                 <th th:utext="#{fieldLabel.endDate}">End</th>
@@ -25,7 +24,6 @@
               </tr>
               <tr class="listRecord" th:each="course : ${subordinate.value}">
                 <td th:text="${course.courseId}"></td>
-                <td th:text="${course.employeeId}"></td>
                 <td th:text="${course.courseName}"></td>
                 <td th:text="${course.fromDate}"></td>
                 <td th:text="${course.toDate}"></td>
