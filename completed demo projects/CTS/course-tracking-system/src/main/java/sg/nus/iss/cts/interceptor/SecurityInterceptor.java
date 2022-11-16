@@ -27,7 +27,8 @@ public class SecurityInterceptor implements HandlerInterceptor {
     }
     
     if (uri.equalsIgnoreCase("/") || uri.equalsIgnoreCase("/home") 
-              || uri.equalsIgnoreCase("/login")) {
+              || uri.equalsIgnoreCase("/login")
+              || uri.equalsIgnoreCase("/about")) {
       return true;
     }
     
