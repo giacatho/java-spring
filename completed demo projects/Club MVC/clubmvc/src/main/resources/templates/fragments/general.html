@@ -17,13 +17,9 @@
 	<div th:fragment="menu" id="menu">
 		<table>
 			<tr>
-				<td><input type="button" value="Manage Members"
-					onclick="window.location.href='/member/list'; return false"
-					class="button" /> <input type="button" value="Manage Facilities"
-					onclick="window.location.href='/facility/list'; return false"
-					class="button" /> <input type="button" value="Manage Booking"
-					onclick="window.location.href='/booking/list'; return false"
-					class="button" /></td>
+				<td><a href="/member/list">Manage Members</a></td>
+				<td><a href="/facility/list">Manage Facilities</a></td>
+				<td><a href="/booking/list">Manage Bookings</a></td>
 			</tr>
 		</table>
 	</div>
@@ -32,7 +28,7 @@
 		<br/>
 		 <small>Now is: <b
 			th:text="${execInfo.now.time}"></b></small> <br /> <small>(c)Facility
-			Booking System , ISS, NUS 2021</small>
+			Booking System, NUS ISS</small>
 	</footer>
 </body>
 </html>

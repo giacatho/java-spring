@@ -1,6 +1,6 @@
 package sg.edu.iss.club.repo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +12,6 @@ import sg.edu.iss.club.domain.Booking;
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	
    @Query("Select b from Booking b where :date between b.startDate AND b.endDate AND b.facility.id = :fid")
-   public List<Booking> findBooking(@Param("date") Date date, @Param("fid") Integer fid);
+   public List<Booking> findBooking(@Param("date") LocalDate date, @Param("fid") Integer fid);
   
 }

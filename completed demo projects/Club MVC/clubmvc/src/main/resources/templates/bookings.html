@@ -5,11 +5,10 @@
 	<header th:insert="fragments/general.html :: header"> </header>
 	<div th:replace="fragments/general.html :: menu"></div>
 
-	<h1>Bookings List</h1>
+	<h2>Bookings List</h2>
 	<!-- Add Hyperlink -->
 	<a href="AddBooking.html" th:href="@{/booking/add}">New Booking</a>
 
-	<h2 th:if="${not #lists.isEmpty(bookings)}">Bookings List</h2>
 	<table th:if="${not #lists.isEmpty(bookings)}" >
 		<tr >
 			<th>Booking Id</th>
@@ -26,8 +25,8 @@
 			<td th:text="${booking.member.fullName}">Name</td>
 			<td th:text=${booking.member.username}>User Name</td>
 			<td th:text=${booking.facility.name}>Last Name</td>
-			<td th:text="${#dates.format(booking.startDate, 'yyyy-MM-dd')}">From Date</td>
-			<td th:text="${#dates.format(booking.endDate, 'yyyy-MM-dd')}">End Date</td>
+			<td th:text="${#temporals.format(booking.startDate, 'dd/MM/yyyy')}">From Date</td>
+			<td th:text="${#temporals.format(booking.endDate, 'dd/MM/yyyy')}">End Date</td>
 			<td th:text=${booking.status}>Status</td>
 			<td ><a href="CancelBooking.html"
         th:href="@{/booking/cancel/}+${booking.id}" 

@@ -1,8 +1,6 @@
 package sg.edu.iss.club.service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,48 +15,46 @@ import sg.edu.iss.club.repo.BookingRepository;
 public class BookingServiceImpl implements BookingService {
 
   @Autowired
-  BookingRepository brepo;
+  BookingRepository booingRepository;
 
   @Transactional
   public void addBooking(Booking booking) {
-    brepo.save(booking);
+    booingRepository.save(booking);
   }
 
   @Transactional
-  public boolean checkAvailability(Booking booking) {
-    boolean bookingstatus = true;
-    Date current = booking.getStartDate();
-    while (current.before(booking.getEndDate()) || current.equals(booking.getEndDate())) {
-      List<Booking> blist = brepo.findBooking(current, booking.getFacility().getId());
-      for (Iterator<Booking> iterator = blist.iterator(); iterator.hasNext();) {
-        Booking booking2 = (Booking) iterator.next();
-        if (booking2.getStatus().equals(BookingStatus.BOOKED)) {
-          bookingstatus = false;
+  public boolean isAvailable(Booking booking) {
+    LocalDate current = booking.getStartDate();
+    
+    while (current.isBefore(booking.getEndDate()) || current.isEqual(booking.getEndDate())) {
+      List<Booking> bookingsAtTheDay = booingRepository.findBooking(current, booking.getFacility().getId());
+      for (Booking bookingAtTheDay : bookingsAtTheDay) {
+        if (bookingAtTheDay.getStatus().equals(BookingStatus.BOOKED)) {
+          // There is some booking at the same day already
+          return false;
         }
       }
-      Calendar c = Calendar.getInstance();
-      c.setTime(current);
-      c.add(Calendar.DATE, 1);
-      current = c.getTime();
+      
+      current = current.plusDays(1);
     }
-    return bookingstatus;
+    
+    return true;
   }
 
   @Transactional
   public void cancelBooking(Booking booking) {
     booking.setStatus(BookingStatus.CANCELED);
-    brepo.save(booking);
-
+    booingRepository.save(booking);
   }
 
   @Transactional
   public List<Booking> listBooking() {
-    return brepo.findAll();
+    return booingRepository.findAll();
   }
 
   @Transactional
   public Booking findBookingById(Integer id) {
-    return brepo.findById(id).get();
+    return booingRepository.findById(id).get();
   }
 
 }

@@ -6,11 +6,10 @@
 	<header th:insert="fragments/general.html :: header"> </header>
 	<div th:replace="fragments/general.html :: menu"></div>
 
-	<h1>Facilities Listing</h1>
+	<h2>Facilities Listing</h2>
 	<!-- Add Hyperlink -->
 	<a href="AddFacility.html" th:href="@{/facility/add}">Add Facility</a>
 
-	<h2 th:if="${not #lists.isEmpty(facilities)}">Facility List</h2>
 	<table th:if="${not #lists.isEmpty(facilities)}">
 		<tr>
 			<th>Facility Id</th>

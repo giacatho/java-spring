@@ -8,7 +8,7 @@ public interface BookingService {
 
   public void addBooking(Booking booking);
 
-  public boolean checkAvailability(Booking booking);
+  public boolean isAvailable(Booking booking);
 
   public void cancelBooking(Booking booking);
 

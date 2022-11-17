@@ -29,25 +29,33 @@ public class MemberController {
 	@RequestMapping(value = "/list")
 	public String list(Model model) {
 		model.addAttribute("members", mservice.findAllMembers());
+		
 		return "members";
 	}
+	
 	@RequestMapping(value = "/add")
 	public String addForm(Model model) {
 		model.addAttribute("member", new Member());
+		
 		return "member-form";
 	}
+	
 	@RequestMapping(value = "/edit/{id}")
 	public String editForm(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("member", mservice.findMemberById(id));
+		
 		return "member-form";
 	}
+	
 	@RequestMapping(value = "/save")
 	public String saveMember(@ModelAttribute("member") @Valid Member member, 
 			BindingResult bindingResult,  Model model) {
 		if (bindingResult.hasErrors()) {
 			return "member-form";
 		}
+		
 		mservice.saveMember(member);
+		
 		return "forward:/member/list";
 	}
 	@RequestMapping(value = "/delete/{id}")

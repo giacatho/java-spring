@@ -1,7 +1,6 @@
 package sg.edu.iss.club.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,11 @@ import sg.edu.iss.club.repo.MemberRepository;
 public class MemberServiceImpl implements MemberService {
 
   @Autowired
-  MemberRepository mrepo;
+  MemberRepository memberRepository;
 
   @Transactional
   public boolean saveMember(Member member) {
-    if (mrepo.save(member) != null)
+    if (memberRepository.save(member) != null)
       return true;
     else
       return false;
@@ -27,33 +26,33 @@ public class MemberServiceImpl implements MemberService {
 
   @Transactional
   public List<Member> findAllMembers() {
-    return mrepo.findAll();
+    return memberRepository.findAll();
   }
 
   @Transactional
   public Member findMemberById(Integer id) {
-    return mrepo.findById(id).get();
+    return memberRepository.findById(id).get();
   }
 
   @Transactional
   public void deleteMember(Member member) {
-    mrepo.delete(member);
+    memberRepository.delete(member);
   }
 
   @Transactional
   public List<String> findAllMemberNames() {
-    List<Member> members = mrepo.findAll();
-    ArrayList<String> names = new ArrayList<String>();
-    for (Iterator<Member> iterator = members.iterator(); iterator.hasNext();) {
-      Member member = iterator.next();
+    List<Member> members = memberRepository.findAll();
+    
+    List<String> names = new ArrayList<String>();
+    for (Member member : members) {
       names.add(member.getFirstName());
     }
+    
     return names;
   }
 
   @Transactional
   public Member findMemberByFirstName(String firstName) {
-    return mrepo.findMemberByFirstName(firstName.trim()).get(0);
+    return memberRepository.findMemberByFirstName(firstName.trim()).get(0);
   }
-
 }

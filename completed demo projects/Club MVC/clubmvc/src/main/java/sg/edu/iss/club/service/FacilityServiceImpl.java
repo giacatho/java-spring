@@ -1,7 +1,6 @@
 package sg.edu.iss.club.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +42,12 @@ public class FacilityServiceImpl implements FacilityService {
   @Transactional
   public List<String> findAllFacilityNames() {
     List<Facility> facilitys = frepo.findAll();
-    ArrayList<String> names = new ArrayList<String>();
-    for (Iterator<Facility> iterator = facilitys.iterator(); iterator.hasNext();) {
-      Facility facility = iterator.next();
+    
+    List<String> names = new ArrayList<String>();
+    for (Facility facility : facilitys) {
       names.add(facility.getName());
     }
+    
     return names;
   }
 

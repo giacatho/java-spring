@@ -17,7 +17,6 @@ import sg.edu.iss.club.domain.BookingStatus;
 import sg.edu.iss.club.domain.Facility;
 import sg.edu.iss.club.domain.Member;
 import sg.edu.iss.club.service.BookingService;
-import sg.edu.iss.club.service.BookingServiceImpl;
 import sg.edu.iss.club.service.FacilityService;
 import sg.edu.iss.club.service.MemberService;
 
@@ -33,15 +32,11 @@ public class BookingController {
 	
 	@Autowired
 	private MemberService memberService;
-	
-	@Autowired
-	public void setBookingService(BookingServiceImpl bookingServiceImpl) {
-		this.bookingService = bookingServiceImpl;
-	}
 
 	@RequestMapping(value = "/list")
 	public String list(Model model) {
 		model.addAttribute("bookings", bookingService.listBooking());
+		
 		return "bookings";
 	}
 	
@@ -78,16 +73,20 @@ public class BookingController {
 		
 		booking.setStatus(BookingStatus.BOOKED);
 		
-		if (bookingService.checkAvailability(booking)) {
-			bookingService.addBooking(booking);
-			return "redirect:/booking/list";
-		} else
-			return "error";
+		if (!bookingService.isAvailable(booking)) {
+		  model.addAttribute("errorMessage", "The Facility is not available for booking in this date range.");
+		  
+		  return "booking-form";
+		}
+		  
+	  bookingService.addBooking(booking);
+    return "redirect:/booking/list";
 	}
 	
 	@RequestMapping(value = "/cancel/{id}")
 	public String cancelBooking(@PathVariable("id") Integer id) {
 		bookingService.cancelBooking(bookingService.findBookingById(id));
+		
 		return "redirect:/booking/list";
 	}
 }

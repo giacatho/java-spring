@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.club.domain.Facility;
 import sg.edu.iss.club.service.FacilityService;
-import sg.edu.iss.club.service.FacilityServiceImpl;
 
 @Controller
 @RequestMapping("/facility")
@@ -20,27 +19,25 @@ public class FacilityController {
 	
 	@Autowired
 	private FacilityService facilityService;
-	
-	@Autowired
-	public void setFacilityService(FacilityServiceImpl fserviceImpl) {
-		this.facilityService = fserviceImpl;
-	}
     
 	@RequestMapping(value = "/list")
 	public String list(Model model) {
 		model.addAttribute("facilities", facilityService.findAllFacilities());
+		
 		return "facilities";
 	}
 	
 	@RequestMapping(value = "/add")
 	public String addForm(Model model) {
 		model.addAttribute("facility", new Facility());
+		
 		return "facility-form";
 	}
 	
 	@RequestMapping(value = "/edit/{id}")
 	public String editForm(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("facility", facilityService.findFacilityById(id));
+		
 		return "facility-form";
 	}
 	
@@ -50,13 +47,16 @@ public class FacilityController {
 		if (bindingResult.hasErrors()) {
 			return "facility-form";
 		}
+		
 		facilityService.saveFacility(facility);
+		
 		return "redirect:/facility/list";
 	}
 	
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteFacility(@PathVariable("id") Integer id) {
 		facilityService.deleteFacility(facilityService.findFacilityById(id));
+		
 		return "redirect:/facility/list";
 	}
 

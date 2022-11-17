@@ -5,7 +5,7 @@
 	<header th:insert="fragments/general.html :: header"> </header>
 	<div th:replace="fragments/general.html :: menu"></div>
 
-	<h1>Facility Form</h1>
+	<h2>Facility Form</h2>
 	<form action="#" th:object="${facility}" th:action="@{/facility/save}"
 		method="post">
 		<fieldset>
