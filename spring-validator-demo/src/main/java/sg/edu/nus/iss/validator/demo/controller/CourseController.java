@@ -21,12 +21,7 @@ public class CourseController {
   private CourseValidator courseValidator;
   
   @InitBinder
-  private void initCourseBinder(WebDataBinder binder) {
-//    System.out.println("---- CourseValidator initCourseBinder() -----");
-//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-//    dateFormat.setLenient(false);
-//    binder.registerCustomEditor(LocalTime.class, new CustomDateEditor(dateFormat, true));
-    
+  private void initCourseBinder(WebDataBinder binder) {    
     binder.addValidators(courseValidator);
   }
   

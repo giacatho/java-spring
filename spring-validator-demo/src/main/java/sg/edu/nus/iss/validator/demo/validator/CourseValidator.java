@@ -18,8 +18,8 @@ public class CourseValidator implements Validator {
   @Override
   public void validate(Object obj, Errors errors) {
     System.out.println("---- CourseValidator validate() -----");
-    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "error.startDate", "Start date is required.");
-    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "endDate", "error.endDate", "End date is required.");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "error.startDate", "Start date is required");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "endDate", "error.endDate", "End date is required");
     
     Course course = (Course) obj;  
     if ((course.getStartDate() != null && course.getEndDate() != null) &&
