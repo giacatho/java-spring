@@ -1,12 +1,8 @@
 package sg.edu.nus.iss.validator.demo.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -26,10 +22,10 @@ public class CourseController {
   
   @InitBinder
   private void initCourseBinder(WebDataBinder binder) {
-    System.out.println("---- CourseValidator initCourseBinder() -----");
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    dateFormat.setLenient(false);
-    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//    System.out.println("---- CourseValidator initCourseBinder() -----");
+//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+//    dateFormat.setLenient(false);
+//    binder.registerCustomEditor(LocalTime.class, new CustomDateEditor(dateFormat, true));
     
     binder.addValidators(courseValidator);
   }
