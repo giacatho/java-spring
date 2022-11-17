@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.format.annotation.DateTimeFormat;
 
+//Note: currently, this class is only here as demo code and is not used in other places in this project.
 public class Customer {
   @Size(min = 2, max = 30)
   private String name;

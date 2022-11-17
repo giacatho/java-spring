@@ -5,6 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+//Note: currently, this class is only here as demo code and is not used in other places in this project.
 public class Pet {
   @NotBlank(message = "Name is required")
   @Size(min = 2, max = 25, message = "Name must 2-25 characters long")
