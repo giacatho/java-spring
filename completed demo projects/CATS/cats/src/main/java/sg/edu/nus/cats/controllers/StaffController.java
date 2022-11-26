@@ -53,7 +53,6 @@ public class StaffController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/home";
-
 	}
 
 	/**
@@ -61,7 +60,6 @@ public class StaffController {
 	 * 
 	 * @return
 	 */
-
 	@RequestMapping(value = "/history")
 	public String employeeCourseHistory(HttpSession session, Model model) {
 		UserSession usession = (UserSession) session.getAttribute("usession");
