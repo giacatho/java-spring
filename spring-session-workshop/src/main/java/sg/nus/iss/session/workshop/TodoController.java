@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TodoController {
   static final String TODOS = "TODO_ATTRIBUTE_NAME";
   @PostMapping("/add")
-  public String addNote(@RequestParam("todo") String todo, HttpSession sessionObj) {
+  public String add(@RequestParam("todo") String todo, HttpSession sessionObj) {
     List<String> todoList = (List<String>) sessionObj.getAttribute(TODOS);
     if (todoList == null) {
       todoList = new ArrayList<>();
