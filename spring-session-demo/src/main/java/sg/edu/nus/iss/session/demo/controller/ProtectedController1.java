@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProtectedController1 {
   @RequestMapping("/method11")
   public String method11(HttpSession sessionObj) {
-    if (SessionHelper.isLoggedIn(sessionObj)) {
+    if (!SessionHelper.isLoggedIn(sessionObj)) {
       return "redirect:/common/login"; 
     }
 
@@ -18,9 +18,9 @@ public class ProtectedController1 {
     return "content11";
   }
   
-  @RequestMapping("/method11")
+  @RequestMapping("/method12")
   public String method12(HttpSession sessionObj) {
-    if (SessionHelper.isLoggedIn(sessionObj)) {
+    if (!SessionHelper.isLoggedIn(sessionObj)) {
       return "redirect:/common/login"; 
     }
     
