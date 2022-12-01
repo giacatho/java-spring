@@ -102,103 +102,103 @@ CREATE TABLE courseevent (
 
 --   
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("dilbert", "pointy", "Dilbert");
+            VALUES ('dilbert', 'pointy', 'Dilbert');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("pointy", "dogbert", "Pointy");
+            VALUES ('pointy', 'dogbert', 'Pointy');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("alice", "pointy", "Alice");
+            VALUES ('alice', 'pointy', 'Alice');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("wally", "pointy", "Wally");
+            VALUES ('wally', 'pointy', 'Wally');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("ashok", "dilbert", "Ashok");
+            VALUES ('ashok', 'dilbert', 'Ashok');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("dogbert", "", "Dogbert");
+            VALUES ('dogbert', '', 'Dogbert');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("ted", "", "Ted");
+            VALUES ('ted', '', 'Ted');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("howard", "", "Loud Howard");
+            VALUES ('howard', '', 'Loud Howard');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("catbert", "dogbert", "Catbert HR");
+            VALUES ('catbert', 'dogbert', 'Catbert HR');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("ratbert", "dogbert", "Ratbert low form");
+            VALUES ('ratbert', 'dogbert', 'Ratbert low form');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("bob", "pointy", "Bob the dino");
+            VALUES ('bob', 'pointy', 'Bob the dino');
 INSERT INTO employee (employeeid, managerid, name)
-            VALUES ("tina", "", "Tina the technical writer");
+            VALUES ('tina', '', 'Tina the technical writer');
 
 --
 INSERT INTO role (roleid, name, description)
-            VALUES ("admin", "Administrator", "System administrator");
+            VALUES ('admin', 'Administrator', 'System administrator');
 INSERT INTO role (roleid, name, description)
-            VALUES ("staff", "Staff", "Staff members");
+            VALUES ('staff', 'Staff', 'Staff members');
 INSERT INTO role (roleid, name, description)
-            VALUES ("manager", "Manager", "Manager");
+            VALUES ('manager', 'Manager', 'Manager');
 
 --
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("dilbert","dilbert","dilbert","dilbert");
+      VALUES('dilbert','dilbert','dilbert','dilbert');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("pointy","pointy","pointy","pointy");
+      VALUES('pointy','pointy','pointy','pointy');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("alice","alice","alice","alice");
+      VALUES('alice','alice','alice','alice');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("wally","wally","wally","wally");
+      VALUES('wally','wally','wally','wally');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("ashok","ashok","ashok","ashok");
+      VALUES('ashok','ashok','ashok','ashok');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("dogbert","dogbert","dogbert","dogbert");
+      VALUES('dogbert','dogbert','dogbert','dogbert');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("ted","ted","ted","ted");
+      VALUES('ted','ted','ted','ted');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("howard","howard","howard","howard");
+      VALUES('howard','howard','howard','howard');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("catbert","catbert","catbert","catbert");
+      VALUES('catbert','catbert','catbert','catbert');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("ratbert","ratbert","ratbert","ratbert");
+      VALUES('ratbert','ratbert','ratbert','ratbert');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("bob","bob","bob","bob");
+      VALUES('bob','bob','bob','bob');
 INSERT INTO user(userid,name,password,employeeid)
-      VALUES("tina","tina","tina","tina");
+      VALUES('tina','tina','tina','tina');
 
 --
 INSERT INTO userrole(roleid,userid)
-        VALUES("manager","dilbert");
+        VALUES('manager','dilbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","dilbert");
+        VALUES('staff','dilbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("manager","pointy");
+        VALUES('manager','pointy');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","pointy");
+        VALUES('staff','pointy');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","alice");
+        VALUES('staff','alice');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","wally");
+        VALUES('staff','wally');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","ashok");
+        VALUES('staff','ashok');
 INSERT INTO userrole(roleid,userid)
-        VALUES("manager","dogbert");
+        VALUES('manager','dogbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","dogbert");
+        VALUES('staff','dogbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","ted");
+        VALUES('staff','ted');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","howard");
+        VALUES('staff','howard');
 INSERT INTO userrole(roleid,userid)
-        VALUES("admin","catbert");
+        VALUES('admin','catbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","catbert");
+        VALUES('staff','catbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","ratbert");
+        VALUES('staff','ratbert');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","bob");
+        VALUES('staff','bob');
 INSERT INTO userrole(roleid,userid)
-        VALUES("staff","tina");
+        VALUES('staff','tina');
 --
 
 INSERT INTO department(departmentid,managerid)
-          VALUES("engineering","pointy");
+          VALUES('engineering','pointy');
 INSERT INTO department(departmentid,managerid)
-          VALUES("hr","catbert");
+          VALUES('hr','catbert');
 
 
 
