@@ -1,6 +1,7 @@
 package sg.nus.iss.courses.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -22,8 +23,8 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public Course findCourse(int id) {
-    return courseRepository.findById(id).orElse(null);
+  public Optional<Course> findCourse(int id) {
+    return courseRepository.findById(id);
   }
 
   @Transactional(readOnly = false)
@@ -40,7 +41,7 @@ public class CourseServiceImpl implements CourseService {
 
   @Transactional(readOnly = false)
   @Override
-  public void removeCourse(int id) {
+  public void deleteCourse(int id) {
     courseRepository.deleteById(id);
   }
   
