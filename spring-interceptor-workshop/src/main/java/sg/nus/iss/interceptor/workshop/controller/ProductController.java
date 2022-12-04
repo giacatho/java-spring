@@ -1,7 +1,5 @@
 package sg.nus.iss.interceptor.workshop.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/product")
 public class ProductController {
   @GetMapping("/list")
-  public String list(HttpSession session) {
+  public String list() {
     return "product-list";
   }
   
   @GetMapping("/create")
-  public String create(HttpSession session) {
+  public String create() {
     return "product-create";
   }
 }
