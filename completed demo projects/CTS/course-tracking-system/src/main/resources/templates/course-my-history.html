@@ -14,7 +14,6 @@
     <table style=" border: 1;">
       <tr class="listHeading">
         <th><span th:text="#{fieldLabel.reference}"></span></th>
-        <th><span th:text="#{fieldLabel.name}"></span></th>
         <th><span th:text="#{fieldLabel.courseName}"></span></th>
         <th><span th:text="#{fieldLabel.startDate}"></span></th>
         <th><span th:text="#{fieldLabel.endDate}"></span></th>
@@ -25,7 +24,6 @@
       </tr>
       <tr th:each="course : ${chistory}" class="listRecord">
         <td align="left" th:text="${course.courseId}">Id</td>
-        <td align="left" th:text="${course.employeeId}">Employee</td>
         <td align="left" th:text="${course.courseName}">Name</td>
         <td align="left" th:text="${#temporals.format(course.fromDate, 'yyyy-MM-dd')}">From</td>
         <td align="left" th:text="${#temporals.format(course.toDate, 'yyyy-MM-dd')}">To</td>

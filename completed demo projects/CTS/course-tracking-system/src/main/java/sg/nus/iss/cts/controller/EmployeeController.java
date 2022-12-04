@@ -83,8 +83,9 @@ public class EmployeeController {
 
   @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
   public String editEmployee(@ModelAttribute @Valid Employee employee, BindingResult result,
-      @PathVariable String id) throws EmployeeNotFound {
+      @PathVariable String id, Model model) throws EmployeeNotFound {
     if (result.hasErrors()) {
+      model.addAttribute("eidlist", employeeService.findAllEmployeeIDs());
       return "employee-edit";
     }
       
