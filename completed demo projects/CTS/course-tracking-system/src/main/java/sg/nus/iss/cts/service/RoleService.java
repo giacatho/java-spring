@@ -1,4 +1,4 @@
-package sg.nus.iss.cts.controller.service;
+package sg.nus.iss.cts.service;
 
 import java.util.List;
 

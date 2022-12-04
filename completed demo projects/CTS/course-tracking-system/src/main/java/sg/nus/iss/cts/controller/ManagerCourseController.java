@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import sg.nus.iss.cts.controller.service.CourseService;
 import sg.nus.iss.cts.model.Approve;
 import sg.nus.iss.cts.model.Course;
 import sg.nus.iss.cts.model.CourseEventEnum;
 import sg.nus.iss.cts.model.Employee;
 import sg.nus.iss.cts.model.UserSession;
+import sg.nus.iss.cts.service.CourseService;
 
 @Controller
 @RequestMapping(value = "/manager")
