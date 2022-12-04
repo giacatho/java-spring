@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import sg.nus.iss.cts.controller.exception.UserNotFound;
-import sg.nus.iss.cts.controller.service.EmployeeService;
-import sg.nus.iss.cts.controller.service.RoleService;
-import sg.nus.iss.cts.controller.service.UserService;
+import sg.nus.iss.cts.exception.UserNotFound;
 import sg.nus.iss.cts.model.Role;
 import sg.nus.iss.cts.model.User;
 import sg.nus.iss.cts.model.UserSession;
+import sg.nus.iss.cts.service.EmployeeService;
+import sg.nus.iss.cts.service.RoleService;
+import sg.nus.iss.cts.service.UserService;
 import sg.nus.iss.cts.validator.UserValidator;
 
 @Controller

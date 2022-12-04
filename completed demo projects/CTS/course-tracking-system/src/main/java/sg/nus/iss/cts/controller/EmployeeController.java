@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import sg.nus.iss.cts.controller.exception.EmployeeNotFound;
-import sg.nus.iss.cts.controller.service.EmployeeService;
+import sg.nus.iss.cts.exception.EmployeeNotFound;
 import sg.nus.iss.cts.model.Employee;
 import sg.nus.iss.cts.model.UserSession;
+import sg.nus.iss.cts.service.EmployeeService;
 import sg.nus.iss.cts.validator.EmployeeValidator;
 
 @Controller

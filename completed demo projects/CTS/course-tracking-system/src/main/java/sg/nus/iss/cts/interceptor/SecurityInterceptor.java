@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import sg.nus.iss.cts.controller.exception.UnauthorizedException;
+import sg.nus.iss.cts.exception.UnauthorizedException;
 import sg.nus.iss.cts.model.UserSession;
 
 @Component
