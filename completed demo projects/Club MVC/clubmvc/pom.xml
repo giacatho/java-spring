@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.edu.iss</groupId>
-	<artifactId>sg.edu.iss.club</artifactId>
+	<artifactId>springboot-clubmvc-demo-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>club - facility booking system</name>
 	<description>Club Demo Project</description>

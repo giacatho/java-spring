@@ -8,7 +8,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>sg.nus.iss.spring</groupId>
-  <artifactId>course-tracking-system</artifactId>
+  <artifactId>course-tracking-system-demo-project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>course-tracking-system</name>
   <description>A complete demo project for Spring Boot</description>
