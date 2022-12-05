@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.nus.iss.spring</groupId>
-	<artifactId>spring-interceptor-workshop</artifactId>
+	<artifactId>springboot-interceptor-workshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-interceptor-workshop</name>
 	<description>Workshop project for Spring Boot Interceptor</description>
