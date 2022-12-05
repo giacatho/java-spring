@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.nus.iss.javaspring</groupId>
-	<artifactId>spring-i18n-demo-switch-language</artifactId>
+	<artifactId>springboot-i18n-demo-switch-language</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-i18n-demo-switch-language</name>
 	<description>Demo project for Spring Boot Internationalization Switch Language</description>
