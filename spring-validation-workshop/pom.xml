@@ -8,7 +8,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>sg.nus.iss.javaspring</groupId>
-  <artifactId>sg.nus.iss.validator.workshop</artifactId>
+  <artifactId>springboot-validation-workshop</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-validation-workshop</name>
   <description>Workshop project for Spring Boot Validation</description>
