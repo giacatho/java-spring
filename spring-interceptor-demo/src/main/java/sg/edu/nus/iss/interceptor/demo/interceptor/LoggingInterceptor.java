@@ -18,15 +18,15 @@ public class LoggingInterceptor implements HandlerInterceptor {
       LoggerFactory.getLogger(LoggingInterceptor.class);
   
   @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse reponse, Object handler) {
+  public boolean preHandle(HttpServletRequest request, 
+        HttpServletResponse response, Object handler) {
     LOGGER.info("LoggingInterceptor preHandle");
-    LOGGER.debug("[request.url] {}", request.getRequestURL());
-    Enumeration enu = request.getParameterNames();
-    String strName;
-
-    while (enu.hasMoreElements()) {
-      strName= (String) enu.nextElement();
-      LOGGER.debug("[request.param] {} = {}",strName, request.getParameter(strName));
+    LOGGER.info("[request.url] {}", request.getRequestURL());
+    Enumeration<String> paramNames = request.getParameterNames();
+    
+    while (paramNames.hasMoreElements()) {
+      String paramName = paramNames.nextElement();
+      LOGGER.info("[request.param] {} = {}", paramName, request.getParameter(paramName));
     }
     return true;
   }

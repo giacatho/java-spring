@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import sg.edu.nus.iss.interceptor.demo.interceptor.LoggingInterceptor;
 import sg.edu.nus.iss.interceptor.demo.interceptor.SecurityInterceptor;
+import sg.edu.nus.iss.interceptor.demo.interceptor.TimeExecuteInterceptor;
 
 @Component
 public class WebAppConfig implements WebMvcConfigurer {
@@ -14,11 +15,14 @@ public class WebAppConfig implements WebMvcConfigurer {
   LoggingInterceptor loggingInterceptor;
   @Autowired
   SecurityInterceptor securityInterceptor;
+  @Autowired
+  TimeExecuteInterceptor timeExecuteInterceptor;
   
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(loggingInterceptor);
-    registry.addInterceptor(securityInterceptor).
-      addPathPatterns("/customer/account/*", "/cart/checkout");
+//    registry.addInterceptor(loggingInterceptor);
+//    registry.addInterceptor(securityInterceptor).
+//      addPathPatterns("/customer/account/*", "/cart/checkout");
+    registry.addInterceptor(timeExecuteInterceptor);
   }
 }
