@@ -19,6 +19,7 @@ public class TimeExecuteInterceptor implements HandlerInterceptor {
 
   public void postHandle(HttpServletRequest request, 
          HttpServletResponse response, Object handler, ModelAndView modelAndView) {
+    System.out.println(request.getRequestURL());
     long startTime = (long) request.getAttribute("startTime");
     long endTime = System.currentTimeMillis();
     long executeTime = endTime - startTime;

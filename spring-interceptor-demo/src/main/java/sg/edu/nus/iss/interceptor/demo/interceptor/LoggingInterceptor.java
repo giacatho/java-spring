@@ -20,13 +20,13 @@ public class LoggingInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest request, 
         HttpServletResponse response, Object handler) {
-    LOGGER.info("LoggingInterceptor preHandle");
-    LOGGER.info("[request.url] {}", request.getRequestURL());
+    LOGGER.info("LoggingInterceptor preHandle()");
+    LOGGER.info("Request URL: {}", request.getRequestURL());
     Enumeration<String> paramNames = request.getParameterNames();
     
     while (paramNames.hasMoreElements()) {
       String paramName = paramNames.nextElement();
-      LOGGER.info("[request.param] {} = {}", paramName, request.getParameter(paramName));
+      LOGGER.info("Request param: {} = {}", paramName, request.getParameter(paramName));
     }
     return true;
   }
@@ -34,12 +34,12 @@ public class LoggingInterceptor implements HandlerInterceptor {
   @Override
   public void postHandle(HttpServletRequest request, HttpServletResponse 
     response, Object handler, ModelAndView modelAndView) {
-    LOGGER.info("LoggingInterceptor postHandle");
+    LOGGER.info("LoggingInterceptor postHandle()");
   }
   
   @Override
   public void afterCompletion(HttpServletRequest request, 
     HttpServletResponse response, Object handler, Exception ex) {
-    LOGGER.info("LoggingInterceptor afterCompletion");
+    LOGGER.info("LoggingInterceptor afterCompletion()");
   }
 }

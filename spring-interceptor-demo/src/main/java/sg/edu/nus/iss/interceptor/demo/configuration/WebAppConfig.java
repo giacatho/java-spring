@@ -20,9 +20,10 @@ public class WebAppConfig implements WebMvcConfigurer {
   
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-//    registry.addInterceptor(loggingInterceptor);
+    registry.addInterceptor(loggingInterceptor);
 //    registry.addInterceptor(securityInterceptor).
 //      addPathPatterns("/customer/account/*", "/cart/checkout");
-    registry.addInterceptor(timeExecuteInterceptor);
+    registry.addInterceptor(timeExecuteInterceptor)
+      .addPathPatterns("/time/*");
   }
 }
