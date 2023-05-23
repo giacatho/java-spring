@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 public class TimeController {
   @GetMapping("/time/showtime")
   public String showTime(@RequestAttribute long startTime, Model model) {
-    System.out.println("Start time: " + startTime);
+    System.out.println("(Controller) Start time: " + startTime);
     
-    executeAnOneSecondTask();
+    executeAnOneSecondTask(); // A method that takes 1s to run
     
     model.addAttribute("startTime", startTime);
     

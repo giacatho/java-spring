@@ -26,7 +26,7 @@ public class TimeExecuteInterceptor implements HandlerInterceptor {
     long endTime = System.currentTimeMillis();
     long executeTime = endTime - startTime;
     
-    System.out.println("Add extra executeTime: " + executeTime);
+    System.out.println("(Interceptor) Add extra executeTime: " + executeTime);
     modelAndView.addObject("executeTime", executeTime);
   }
 }
