@@ -1,28 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-import Course from './Course';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import CreateCourse from './CreateCourse';
 import ListCourse from './ListCourse';
 
 function App() {
-  const courseList = [{
-    id: 1,
-    code: 'FOPCS',
-    name: 'Fundamental of Programming in C Sharp',
-    description: 'FOPCS description' 
-  },
-  {
-    id: 2,
-    code: 'OOPCS',
-    name: 'Object Oriented Programming',
-    description: 'OOPCS description' 
-  }];
+  function getNavigationHtml() {
+    return (
+      <nav className="py-2 bg-light border-bottom">
+        <div className="container d-flex flex-wrap">
+          <ul className="nav me-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to={"/"}>Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/list-course"}>Courses</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/create-course"}>Create</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    )
+  }
+    
 
 
   return (
-    <div>
-      <h2>My Course List</h2>
-      <ListCourse myCourseList={courseList} />
-    </div>
+    <BrowserRouter>
+      {getNavigationHtml()}
+      <h2>Course Management</h2>
+      <Routes>
+        <Route path="/list-course"
+          element={<ListCourse />} />
+        <Route path="/create-course"
+          element={<CreateCourse />} />
+        <Route path="/" element={<ListCourse />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

@@ -1,43 +1,56 @@
-import { useState } from "react";
-import Course from "./Course";
+import React, { useEffect, useState } from 'react'
+import Course from './Course'
+import CourseDetail from './CourseDetail';
+import axios from 'axios';
 
-export default function ListCourse({myCourseList}) {
-    const [ detailId, updateDetailId ] = useState('');
-    
-    function handleCourseClick(id) {
-        console.log('Course id ' + id);
-        updateDetailId(id);
-    }
+const REST_API_URL = "http://localhost:8080/api/courses";
 
-    const listCourseHtml = myCourseList.map(course => 
-        <div key={course.id}>
-            <Course myCourse={course} handleCourseClick={handleCourseClick} />
-        </div>
-    );
+export default function ListCourse() {
+  const [ myCourseList, updateMyCourseList ] = useState([]); 
+  const [ detailId, updateDetailId ] = useState('');
+  
+  useEffect(() => {
+    console.log("Retrieving course list from server");
+    apiRetrieveCourseList();
+  });
 
-    function getDetailCourseHtml() {
-        // Get the course object from the detailId
-        const detailCourse = myCourseList.find(course => course.id === detailId);
+  function apiRetrieveCourseList() {
+    axios.get(REST_API_URL)
+      .then(response => {
+        updateMyCourseList(response.data)
+        console.log(response.data);
+      })
+      .catch(e => {
+        
+      });
+  }
 
-        // Return the object rendering
-        if (detailCourse) {
-            return (
-                <div>
-                    <h4>Detail Course</h4>
-                    <div>Code: {detailCourse.code}</div>
-                    <div>Name: {detailCourse.name}</div>
-                    <div>Description: {detailCourse.description}</div>
-                </div>
-            )
-        } else {
-            return <></>
-        }
-    }
+  function handleCourseClick(id) {
+    updateDetailId(id);
+  }
 
-    return (
-        <div>
-            {listCourseHtml}
-            {getDetailCourseHtml()}
-        </div>
-    )
+  const listCourseHtml = myCourseList.map((myCourse) =>
+    <div key={myCourse.id}>
+      <Course myCourse={myCourse} handleCourseClick={handleCourseClick} />
+    </div>
+  );
+
+  const detailCourse = 
+    myCourseList.find(myCourse => myCourse.id === detailId);
+
+  function getDetailCourseHtml() {
+    if (detailCourse) {
+      return (
+        <CourseDetail detailCourse={detailCourse} />
+      );
+    } 
+    return <></>;
+  }
+
+  return (
+    <div>
+      {listCourseHtml}
+      {getDetailCourseHtml()}
+    </div>
+  )
 }
