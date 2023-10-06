@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+ 
+<h3>Course List</h3>
+  <a th:href="@{/course/create}" class="btn btn-primary btn-sm mb-3" >Create Course</a>
+  <table style="width:80%" border="1"
+         class = "table table-striped table-responsive-md">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="course:${courses}">
+        <td th:text="${course.code}"></td>
+        <td th:text="${course.name}"></td>
+        <td th:text="${course.description}"></td>
+        <td> <a th:href="@{/course/update/{id}(id=${course.id})}"
+                class="btn btn-primary">Update</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
