@@ -1,7 +1,6 @@
 package sg.nus.iss.service.workshop.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,20 +21,10 @@ public class CourseServiceImpl implements CourseService {
     return courseRepository.findAll();
   }
   
-  @Override
-  public Optional<Course> findCourseById(int id) {
-    return courseRepository.findById(id);
-  }
-
   @Transactional(readOnly = false)
   @Override
   public Course createCourse(Course course) {
     return courseRepository.save(course);
   }
 
-  @Transactional(readOnly = false)
-  @Override
-  public Course updateCourse(Course course) {
-    return courseRepository.save(course);
-  }
 }
