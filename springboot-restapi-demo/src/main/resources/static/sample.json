@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "code": "FOPCS",
+    "name": "Fundamentals of Programming in C#",
+    "description": "FOPCS description"
+  },
+  {
+    "id": 2,
+    "code": "OOPCS",
+    "name": "Object Oriented Programing",
+    "description": "OOPCS description"
+  }
+]
