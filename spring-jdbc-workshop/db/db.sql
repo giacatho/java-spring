@@ -1,13 +1,13 @@
+DROP DATABASE IF EXISTS JdbcWorkshop;
 CREATE DATABASE JdbcWorkshop;
-
 USE JdbcWorkshop;
 
 CREATE TABLE Course(
-  Id int NOT NULL,
-  Code varchar(50) NOT NULL,
-  Name varchar(250) NOT NULL,
-  Description varchar(300) NOT NULL,
-  PRIMARY KEY (Id)
+  id int NOT NULL,
+  code varchar(50) NOT NULL,
+  name varchar(250) NOT NULL,
+  description varchar(300) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 INSERT INTO Course(Id, Code, Name, Description)

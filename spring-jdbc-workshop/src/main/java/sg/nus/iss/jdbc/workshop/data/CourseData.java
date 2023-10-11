@@ -15,6 +15,26 @@ public class CourseData {
   static String username = "root";
   static String password = "adminadmin";
   
+  public static void startup() {
+    try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+      Statement statement = conn.createStatement();
+      statement.addBatch("DROP TABLE IF EXISTS Course");
+      statement.addBatch("""
+          CREATE TABLE Course(
+            id int NOT NULL,
+            code varchar(50) NOT NULL,
+            name varchar(250) NOT NULL,
+            description varchar(300) NOT NULL,
+            PRIMARY KEY (id)
+          )
+          """);
+      
+      statement.executeBatch();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+  }
+  
   public static List<Course> getAllCourses() {
     List<Course> courses = new ArrayList<Course>();
     
@@ -41,61 +61,77 @@ public class CourseData {
     
     return courses;
   }
-//  public static List<Course> GetAllCourses()
-//  {
-//      List<Course> courses = new List<Course>();
-//
-//      using (SqlConnection conn = new SqlConnection(Data.CONNECTION_STRING))
-//      {
-//          conn.Open();
-//          string sql = @"SELECT ID, Code, Name
-//                      FROM Course";
-//          SqlCommand cmd = new SqlCommand(sql, conn);
-//          SqlDataReader reader = cmd.ExecuteReader();
-//
-//          while (reader.Read())
-//          {
-//              Course course = new Course()
-//              {
-//                  ID = (int)reader["ID"],
-//                  Code = (string)reader["Code"],
-//                  Name = (string)reader["Name"]
-//              };
-//              courses.Add(course);
-//          }
-//      }
-//
-//      return courses;
-//  }
-//
-//  public static Course GetCourseDetailsByCourseId(int courseId)
-//  {
-//      Course course = null;
-//
-//      using (SqlConnection conn = new SqlConnection(Data.CONNECTION_STRING))
-//      {
-//          conn.Open();
-//
-//          string sql = @"SELECT Course.Id, Course.Code, Course.Name as CourseName, Course.Description
-//                      FROM Course
-//                      WHERE Course.Id = " + courseId;
-//
-//          SqlCommand cmd = new SqlCommand(sql, conn);
-//
-//          SqlDataReader reader = cmd.ExecuteReader();
-//          if (reader.Read())
-//          {
-//              course = new Course()
-//              {
-//                  ID = (int)reader["Id"],
-//                  Code = (string)reader["Code"],
-//                  Name = (string)reader["CourseName"],
-//                  Description = (string)reader["Description"],
-//              };
-//          };
-//      }
-//
-//      return course;
-//  }
 
+  public static Course getCourse(int courseId) {
+    Course course = null;
+    
+    try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+      String sql = String.format("""  
+          SELECT id, code as courseCode, name, description 
+          FROM course
+          WHERE id = %d 
+          """, courseId);
+      
+      Statement statement = conn.createStatement();
+      ResultSet result = statement.executeQuery(sql);
+       
+      if (result.next()) {
+        int id = result.getInt("id");
+        String code = result.getString("courseCode");
+        String name = result.getString("name");
+        String description = result.getString("description");
+        
+        course = new Course(id, code, name, description);
+      }       
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    
+    return course;
+  }
+  
+  public static boolean createCourse(Course inCourse) {
+    try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+      String sql = String.format("""  
+          INSERT INTO Course (id, code, name, description) 
+          VALUES (%d, '%s', '%s', '%s')
+          """, inCourse.getId(), inCourse.getCode(), inCourse.getName(), inCourse.getDescription());
+      
+      Statement statement = conn.createStatement();
+      int rowsInserted = statement.executeUpdate(sql);
+      
+      if (rowsInserted == 1) {
+        return true;
+      }
+       
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    
+    return false;
+  }
+  
+  public static boolean updateCourse(int id, Course inCourse) {
+    try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {  
+      String sql = String.format("""
+            UPDATE Course 
+            SET code = '%s', 
+                name = '%s', 
+                description = '%s' 
+            WHERE id = %d
+          """, inCourse.getCode(), inCourse.getName(), inCourse.getDescription(), id);
+       
+      Statement statement = conn.createStatement();
+      int rowsUpdated = statement.executeUpdate(sql);
+    
+      if (rowsUpdated == 1) {
+          return true;
+      }
+       
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    
+    return false;
+  }
 }
