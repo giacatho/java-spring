@@ -52,7 +52,7 @@ public class CourseData {
     
     return affectedRow == 1;
   }
-  
+
   
   public boolean updateCourse(int id, Course inCourse) {
     int affectedRow = jdbcTemplate.update("""
