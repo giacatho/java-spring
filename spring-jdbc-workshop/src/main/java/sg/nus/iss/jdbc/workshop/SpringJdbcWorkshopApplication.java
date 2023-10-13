@@ -13,31 +13,39 @@ import sg.nus.iss.jdbc.workshop.model.Course;
 @SpringBootApplication
 public class SpringJdbcWorkshopApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringJdbcWorkshopApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SpringJdbcWorkshopApplication.class, args);
+  }
 
-	@Bean
+  @Bean
   CommandLineRunner commandLineRun() {
     return args -> {
-      CourseData.startup();
-      
-      System.out.println("---- Create some courses");
-      CourseData.createCourse(new Course(1, "FOPCS", "Foundations of Programming with C#", "Write programs using C# with Visual Studio"));
-      CourseData.createCourse(new Course(2, "OOPCS", "Object Oriented with C#", "Understand and program on main Object Oriented concepts"));
-      CourseData.createCourse(new Course(3, "MVC.NET", "ASP.NET MVC Programming", "Understand and develop web applications using ASP.NET MVC"));
-      
+      // CourseData.startup();
+
       System.out.println("---- Find all courses");
       List<Course> myCourses = CourseData.getAllCourses();
       myCourses.forEach(myCourse -> System.out.println(myCourse));
-      
+
+      System.out.println("---- Search courses having 'program' in their description");
+      List<Course> coursesWithProgramming = CourseData.findCoures("program");
+      coursesWithProgramming.forEach(myCourse -> System.out.println(myCourse));
+
+      System.out.println("---- Create a new course");
+      CourseData.createCourse(
+          new Course(4, "SQL", "Database Programming", "Write SQL query to manipulate data in MySQL database"));
+
+      System.out.println("---- Find all courses");
+      List<Course> newCourses = CourseData.getAllCourses();
+      newCourses.forEach(myCourse -> System.out.println(myCourse));
+
       System.out.println("---- Update course with id = 2");
-      CourseData.updateCourse(2, new Course("OOP", "Object Oriented Programming", "Program with Object Oriented foundations"));
-      
+      CourseData.updateCourse(2,
+          new Course("OOP", "Object Oriented Programming", "Program with Object Oriented foundations"));
+
       System.out.println("---- Find course with id = 2");
       Course myCourse = CourseData.getCourse(2);
       System.out.println(myCourse);
-      
+
     };
-	}
+  }
 }

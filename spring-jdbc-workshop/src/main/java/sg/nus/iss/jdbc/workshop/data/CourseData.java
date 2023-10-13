@@ -2,6 +2,7 @@ package sg.nus.iss.jdbc.workshop.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,6 +48,32 @@ public class CourseData {
       Statement statement = conn.createStatement();
       ResultSet result = statement.executeQuery(sql);
        
+      while (result.next()){
+        int id = result.getInt("id");
+        String code = result.getString("code");
+        String name = result.getString("name");
+        String description = result.getString("description");
+        
+        courses.add(new Course(id, code, name, description));
+      }       
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    
+    return courses;
+  }
+  
+  public static List<Course> findCoures(String term) {
+    List<Course> courses = new ArrayList<Course>();
+    
+    try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+      // Read more: https://stackoverflow.com/a/8248052/1343667
+      String sql = "SELECT id, code, name, description FROM course WHERE description LIKE ?";
+      
+      PreparedStatement statement = conn.prepareStatement(sql);
+      statement.setString(1, "%" + term + "%");       
+      
+      ResultSet result = statement.executeQuery();
       while (result.next()){
         int id = result.getInt("id");
         String code = result.getString("code");
