@@ -18,4 +18,13 @@ public interface CourseRepository extends CrudRepository<Course, Integer>{
         @Param("newCode") String newCode, 
         @Param("newName") String newName, 
         @Param("newDescription") String newDescription);
+  
+  @Query("""
+      SELECT *
+      FROM Course, LecturerCourse
+      WHERE Course.Id = LecturerCourse.CourseId AND
+      LecturerCourse.LecturerId = :lecturerId
+    """)
+  public List<Course> findByLecturerId(@Param("lecturerId") int lectureId);
+  
 }

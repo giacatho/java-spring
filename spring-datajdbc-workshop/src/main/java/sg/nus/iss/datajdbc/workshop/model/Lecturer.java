@@ -1,10 +1,21 @@
 package sg.nus.iss.datajdbc.workshop.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table(name = "lecturer")
 public class Lecturer {
+  @Id
   private int id;
   private String username;
+  @Column(value = "firstname")
   private String firstName;
+  @Column(value = "lastname")
   private String lastName;
+  
+  public Lecturer() { 
+  }
   
   public Lecturer(int id, String username, String firstName, String lastName) {
     this(username, firstName, lastName);
