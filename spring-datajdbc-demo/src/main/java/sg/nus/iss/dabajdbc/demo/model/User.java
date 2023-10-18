@@ -6,43 +6,41 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("users")
 public class User {
-    @Id
-    @Column("id")
-    private Long id;
+  @Id
+  @Column("id")
+  private Long id;
 
-    @Column("username")
-    private String username;
+  @Column("username")
+  private String username;
 
-    private boolean active;
+  private boolean active;
 
-    public User() {
+  public User() {}
 
-    }
+  public User(String username) {
+    this(username, true);
+  }
 
-    public User(String username) {
-        this(username, true);
-    }
+  public User(String username, boolean active) {
+    this.username = username;
+    this.active = active;
+  }
 
-    public User(String username, boolean active) {
-        this.username = username;
-        this.active = active;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  @Override
+  public String toString() {
+    return "User [id=" + id + ", username=" + username + ", active=" + active + "]";
+  }
 
-    @Override
-    public String toString() {
-      return "User [id=" + id + ", username=" + username + ", active=" + active + "]";
-    }
-    
 }

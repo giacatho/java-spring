@@ -22,7 +22,7 @@ public class SpringDatajdbcDemoApplication {
 	@Bean
   CommandLineRunner commandLineRun(UserRepository userRepository) {
     return args -> {
-      List<User> myUsers;
+      Iterable<User> myUsers;
       Optional<User> myUser;
       
       System.out.println("---- Generate users");
@@ -60,7 +60,8 @@ public class SpringDatajdbcDemoApplication {
       myUsers.forEach(user -> System.out.println(user));
       
       System.out.println("---- Activiate user with id = 5");
-      userRepository.updateActive(true, 5);
+      int noRowsAffected = userRepository.updateActive(true, 5);
+      System.out.println(noRowsAffected + " number of rows are affected");
       
       System.out.println("---- Find active users");
       myUsers = userRepository.findByActive(true);
