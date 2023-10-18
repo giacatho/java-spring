@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(30),
+  active BOOLEAN
+);
