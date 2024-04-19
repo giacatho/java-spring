@@ -1,9 +1,9 @@
 package sg.edu.nus.iss.validator.demo.model;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 //Note: currently, this class is only here as demo code and is not used in other places in this project.
 public class Pet {

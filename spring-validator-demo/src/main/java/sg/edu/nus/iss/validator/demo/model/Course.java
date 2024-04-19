@@ -2,9 +2,9 @@ package sg.edu.nus.iss.validator.demo.model;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotBlank;
-
 import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.validation.constraints.NotBlank;
 
 public class Course {
   @NotBlank(message = "Course code is required")

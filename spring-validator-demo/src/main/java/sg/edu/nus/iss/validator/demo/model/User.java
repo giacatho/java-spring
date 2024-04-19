@@ -1,6 +1,6 @@
 package sg.edu.nus.iss.validator.demo.model;
 
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 
 public class User {
   @Size(min=3, max=20, message = "username must be 3-20 characters")
