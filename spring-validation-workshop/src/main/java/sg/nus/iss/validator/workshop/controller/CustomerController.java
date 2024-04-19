@@ -1,7 +1,5 @@
 package sg.nus.iss.validator.workshop.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.validation.Valid;
 import sg.nus.iss.validator.workshop.model.Customer;
 import sg.nus.iss.validator.workshop.validator.CustomerValidator;
 

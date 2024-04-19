@@ -1,8 +1,8 @@
 package sg.nus.iss.validator.workshop.model;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class Customer {
   @Size(min = 2, max = 30, message = "Name must be 2-30 characters long")
