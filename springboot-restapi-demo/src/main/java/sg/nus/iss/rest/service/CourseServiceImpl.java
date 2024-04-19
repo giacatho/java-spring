@@ -3,11 +3,10 @@ package sg.nus.iss.rest.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.annotation.Resource;
 import sg.nus.iss.rest.model.Course;
 import sg.nus.iss.rest.repository.CourseRepository;
 
