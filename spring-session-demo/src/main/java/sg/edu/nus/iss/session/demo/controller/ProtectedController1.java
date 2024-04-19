@@ -1,9 +1,9 @@
 package sg.edu.nus.iss.session.demo.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/protected1")
