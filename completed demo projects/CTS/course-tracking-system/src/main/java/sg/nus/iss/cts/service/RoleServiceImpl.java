@@ -2,11 +2,10 @@ package sg.nus.iss.cts.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.annotation.Resource;
 import sg.nus.iss.cts.model.Role;
 import sg.nus.iss.cts.repository.RoleRepository;
 

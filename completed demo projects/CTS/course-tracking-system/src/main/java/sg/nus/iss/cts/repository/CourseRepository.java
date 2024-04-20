@@ -15,6 +15,6 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
   @Query("SELECT c from Course c WHERE c.employeeId = :eid AND (c.status ='SUBMITTED' OR c.status ='UPDATED')")
   List<Course> findPendingCoursesByEID(@Param("eid") String eid);
   
-  @Query(value = "SELECT * FROM course WHERE status = ?0", nativeQuery = true)
-  List<Course> findPendingCoursesByStatus(String status);
+  @Query(value = "SELECT * FROM course WHERE status = ':status'", nativeQuery = true)
+  List<Course> findPendingCoursesByStatus(@Param("status") String status);
 }
