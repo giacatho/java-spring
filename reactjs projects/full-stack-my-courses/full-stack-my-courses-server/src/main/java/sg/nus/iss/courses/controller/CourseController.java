@@ -32,7 +32,7 @@ public class CourseController {
   }
   
   @GetMapping("/courses/{id}")
-  public ResponseEntity<Course> getCourseById(int id) {
+  public ResponseEntity<Course> getCourseById(@PathVariable("id") int id) {
     Optional<Course> optCourse = courseService.findCourse(id);
     
     if (optCourse.isPresent()) {
