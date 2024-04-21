@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotEmpty;
@@ -19,9 +20,9 @@ public class Booking {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
-  @OneToOne
+  @ManyToOne
   private Member member;
-  @OneToOne
+  @ManyToOne
   private Facility facility;
 
   @NotNull(message = "startDate must be provided")

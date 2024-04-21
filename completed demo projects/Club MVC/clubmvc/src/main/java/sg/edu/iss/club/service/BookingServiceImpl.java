@@ -15,11 +15,11 @@ import sg.edu.iss.club.repo.BookingRepository;
 public class BookingServiceImpl implements BookingService {
 
   @Autowired
-  BookingRepository booingRepository;
+  BookingRepository bookingRepository;
 
   @Transactional
   public void addBooking(Booking booking) {
-    booingRepository.save(booking);
+    bookingRepository.save(booking);
   }
 
   @Transactional
@@ -27,7 +27,7 @@ public class BookingServiceImpl implements BookingService {
     LocalDate current = booking.getStartDate();
     
     while (current.isBefore(booking.getEndDate()) || current.isEqual(booking.getEndDate())) {
-      List<Booking> bookingsAtTheDay = booingRepository.findBooking(current, booking.getFacility().getId());
+      List<Booking> bookingsAtTheDay = bookingRepository.findBooking(current, booking.getFacility().getId());
       for (Booking bookingAtTheDay : bookingsAtTheDay) {
         if (bookingAtTheDay.getStatus().equals(BookingStatus.BOOKED)) {
           // There is some booking at the same day already
@@ -44,17 +44,17 @@ public class BookingServiceImpl implements BookingService {
   @Transactional
   public void cancelBooking(Booking booking) {
     booking.setStatus(BookingStatus.CANCELED);
-    booingRepository.save(booking);
+    bookingRepository.save(booking);
   }
 
   @Transactional
   public List<Booking> listBooking() {
-    return booingRepository.findAll();
+    return bookingRepository.findAll();
   }
 
   @Transactional
   public Booking findBookingById(Integer id) {
-    return booingRepository.findById(id).get();
+    return bookingRepository.findById(id).get();
   }
 
 }
