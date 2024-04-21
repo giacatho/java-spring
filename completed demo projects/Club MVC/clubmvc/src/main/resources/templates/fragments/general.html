@@ -27,7 +27,7 @@
 		<a href="Home" th:href="@{/}">Back to Home</a>
 		<br/>
 		 <small>Now is: <b
-			th:text="${execInfo.now.time}"></b></small> <br /> <small>(c)Facility
+			th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"></b></small> <br /> <small>(c)Facility
 			Booking System, NUS ISS</small>
 	</footer>
 </body>

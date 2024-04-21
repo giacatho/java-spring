@@ -3,13 +3,12 @@ package sg.edu.iss.club;
 import java.time.LocalDate;
 import java.util.TimeZone;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import jakarta.annotation.PostConstruct;
 import sg.edu.iss.club.domain.Booking;
 import sg.edu.iss.club.domain.Facility;
 import sg.edu.iss.club.domain.Member;
