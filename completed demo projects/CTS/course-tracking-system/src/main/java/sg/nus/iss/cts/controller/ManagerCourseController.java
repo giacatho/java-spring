@@ -83,14 +83,14 @@ public class ManagerCourseController {
     if (result.hasErrors())
       return "manager-course-detail";
         
-    Course c = cService.findCourse(id);
+    Course course = cService.findCourse(id);
     if (approve.getDecision().trim().equalsIgnoreCase(CourseEventEnum.APPROVED.toString())) {
-      c.setStatus(CourseEventEnum.APPROVED);
+      course.setStatus(CourseEventEnum.APPROVED);
     } else {
-      c.setStatus(CourseEventEnum.REJECTED);
+      course.setStatus(CourseEventEnum.REJECTED);
     }
     
-    cService.changeCourse(c);
+    cService.changeCourse(course);
     String message = "Course was successfully updated.";
     System.out.println(message);
     
