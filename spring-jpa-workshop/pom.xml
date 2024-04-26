@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sg.nus.iss.javaspring</groupId>
-	<artifactId>springboot-jpa-workshop</artifactId>
+	<artifactId>spring-jpa-workshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-jpa-workshop</name>
 	<description>Workshop project for Spring Data JPA</description>
