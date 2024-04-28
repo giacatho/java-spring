@@ -9,11 +9,11 @@ import org.springframework.data.repository.query.Param;
 import sg.nus.iss.jpql.demo.domain.Course;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
-  @Query("SELECT c " + 
-         "FROM Course c " +
-               "JOIN c.students s " +
-         "WHERE s.matricNo = :matricNo ")
-  public List<Course> findByStudentMatricNo(@Param("matricNo") String matricNo);
+@Query("SELECT c " + 
+       "FROM Course c " +
+             "JOIN c.students s " +
+       "WHERE s.matricNo = :matricNo ")
+public List<Course> findByStudentMatricNo(@Param("matricNo") String matricNo);
   
   @Query("SELECT c " + 
          "FROM Student s " +
