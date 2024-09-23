@@ -13,7 +13,7 @@ public class Course {
   private String code;
   
   @NotBlank(message = "Name is required")
-  @Size(max = 100)
+  @Size(max = 100, message = "Name must not be > 100 characters")
   private String name;
   
   @DateTimeFormat(pattern = "yyyy-MM-dd")
