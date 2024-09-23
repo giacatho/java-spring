@@ -5,12 +5,15 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class Course {
-  @NotBlank(message = "Course code is required")
+  @NotBlank(message = "Code is required")
+  @Size(min = 3, max = 10, message = "Code must be between 3 - 10 characters")
   private String code;
   
-  @NotBlank(message = "Course name is required")
+  @NotBlank(message = "Name is required")
+  @Size(max = 100)
   private String name;
   
   @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -18,6 +21,8 @@ public class Course {
   
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate endDate;
+  
+  // ...
   
   public String getCode() {
     return code;
