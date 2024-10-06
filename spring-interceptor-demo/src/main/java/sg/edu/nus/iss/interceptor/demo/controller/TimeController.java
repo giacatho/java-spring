@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 public class TimeController {
   @GetMapping("/time/showtime")
   public String showTime(@RequestAttribute long startTime, Model model) {
-    System.out.println("(Controller) Start time: " + startTime);
+    // System.out.println("(Controller) Start time: " + startTime);
     
     executeAnOneSecondTask(); // A method that takes 1s to run
     
